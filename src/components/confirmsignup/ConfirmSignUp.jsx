@@ -31,7 +31,7 @@ const ConfirmSignUp = () => {
                 >
                   <span className="input-placeholder">Name</span>
                 </div>
-                <input className="first-name-input"  />
+                <input className="first-name-input" />
               </div>
             </label>
             <label className="label-click-confirm">
@@ -55,7 +55,7 @@ const ConfirmSignUp = () => {
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <span className="input-placeholder" >Date of Birth</span>
+                  <span className="input-placeholder">Date of Birth</span>
                 </div>
                 <input className="first-name-input" />
               </div>
