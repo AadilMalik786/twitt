@@ -462,7 +462,7 @@
   // overflow-y: auto;
   position: relative;
   @include md {
-    // overflow-y: auto;
+    overflow-y: auto;
     // overflow-x: hidden;
   }
 }

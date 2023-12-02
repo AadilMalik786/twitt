@@ -51,6 +51,7 @@ body{
       @include md {
         height: 40px;
         width: 40px;
+
       }
     }
   }
@@ -63,10 +64,11 @@ body{
     overflow: hidden;
 
     @include md {
-      top: 100px;
+      // top: 100px;
       width: 100%;
       position: static;
       padding: 30px;
+      // background-color: red;
       height: 100%;
     }
 
@@ -196,6 +198,7 @@ footer{
   margin-top: 740px;
   @include md{
       height: 40vh;
+      margin-top: 0;
   }
 }
 ul{

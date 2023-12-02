@@ -9,7 +9,6 @@ import "./home.scss";
 const Home = () => {
   const navigate = useNavigate();
 
-  
   return (
     <>
       <div className="home-container">
@@ -38,14 +37,14 @@ const Home = () => {
             <span>or</span>
             <hr className="horizontal_line" />
           </p>
-          
+
           <button
             className="create_Account-button"
             onClick={() => navigate("signup")}
           >
             Create Account
           </button>
-    
+
           <p className="text_inside-create-button">
             By signing up, you agree to the <a href="">Terms of Service</a> and{" "}
             <a href="">
@@ -59,30 +58,29 @@ const Home = () => {
             <span>Sign in</span>
           </button>
         </div>
-       
-      <footer >
-            <ul>
-                <li>About</li>
-                <li>Download the X app</li>
-                <li>Help Center</li>
-                <li>Terms of Service</li>
-                <li>Privacy Policy</li>
-                <li>Cookie Policy</li>
-                <li>Accessibility</li>
-                <li>Ads info</li>
-                <li>Blog</li>
-                <li>Status</li>
-                <li>Careers</li>
-                <li>Brand Resources</li>
-                <li>Advertising</li>
-                <li>Marketing</li>
-                <li>X for Business</li>
-                <li>Developers</li>
-                <li>Directory</li>
-                <li>Settings</li>
-                <li>&copy; 2023 x corp.</li>
-                
-            </ul>
+
+        <footer>
+          <ul>
+            <li>About</li>
+            <li>Download the X app</li>
+            <li>Help Center</li>
+            <li>Terms of Service</li>
+            <li>Privacy Policy</li>
+            <li>Cookie Policy</li>
+            <li>Accessibility</li>
+            <li>Ads info</li>
+            <li>Blog</li>
+            <li>Status</li>
+            <li>Careers</li>
+            <li>Brand Resources</li>
+            <li>Advertising</li>
+            <li>Marketing</li>
+            <li>X for Business</li>
+            <li>Developers</li>
+            <li>Directory</li>
+            <li>Settings</li>
+            <li>&copy; 2023 x corp.</li>
+          </ul>
         </footer>
       </div>
       <Outlet />
