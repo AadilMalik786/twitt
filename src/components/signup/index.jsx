@@ -31,11 +31,11 @@ const SignUp = () => {
   const [monthHighlight, setMonthHighlight] = useState(false);
   const [dayHighlight,setDayHighlight] =useState(false);
   const [yearHighlight,setYearHighlight] =useState(false);
-  // const [hoveredIndex, setHoveredIndex] = useState("white");
+  const [hovered, setHovered] = useState(null);
   // const [color,setColor]=useState("white")
   const navigate = useNavigate();
   const divRef = useRef();
-  const monRef =useRef();
+  // const monRef =useRef();
   const dayRef = useRef();
   const yearRef = useRef();
 
@@ -418,7 +418,8 @@ const SignUp = () => {
   ];
 
   const Toggle = (e) => {
-    setToggle(!toggle);
+    setToggle((prev)=>!prev) ;
+   
     setToggleSecond(false);
     setToggleThird(false);
     const selectMonth = e.target.value;
@@ -567,13 +568,7 @@ const SignUp = () => {
   };
   
   
-  const handleClickOutsideFirst = (event) => {
-    if (divRef.current && !divRef.current.contains(event.target)) {
-      setToggle(false);
-      setMonthHighlight(false)
-    }
-   
-  };
+ 
  
 
   const handleClickOutsideSecond = (event) => {
@@ -594,11 +589,10 @@ const SignUp = () => {
   useEffect(() => {
     const handleClick = (event) => {
      
-      // handleClickOutsideMon(event);
-      handleClickOutsideFirst(event);
+      
       handleClickOutsideSecond(event);
       handleClickOutsideThird(event);
-      // handleClickOutsideMon(event);
+      
     };
 
     document.addEventListener("click", handleClick);
@@ -612,35 +606,45 @@ const SignUp = () => {
   const selectMonth = (monthName, e) => {
     
     setToggle(false);
+    e.stopPropagation();
     setSelectedMonth(monthName);
     setUser({ ...user, monthingname: monthName });
   };
-  // const handleMouseLeave = () => {
-  //   setIsHovered(true);
-  // };
-  // const elementStyle = {
-  //   backgroundColor: isHovered ? 'blue' : 'initial', // Change 'blue' to the desired hover color
-  //   // Add other styles as needed
-  // };
+  
+  const click =(e)=>{
+    const targetList=e.target.classList;
+   if (!(targetList.contains('carot-symbol-month')  || targetList.contains("carot-month-child"))) {
+    setToggle(false);
+    setMonthHighlight(false);
+  }
+}
 
-  // const handleMouseOut = (index) =>()=> {
-  //   setHoveredIndex(index);
-  // };
+const clicktwo=()=>{
+  setToggle(false);
+  setMonthHighlight(false)
+}
+
+const clickthree=(index)=>{
+  console.log("color");
+  // e.stopPropagation();
+  setHovered(index);
+}
+
 
   return ReactDOM.createPortal(
     <>
-      <div className="modal-wrapper"></div>
-      <div className="signup-parent-container">
-        <form action="" method="POST" style={{ overflowY: "auto" }}>
-          <div className="Signup_subParent-container">
+      <div className="modal-wrapper" onClick={clicktwo} ></div>
+      <div className="signup-parent-container" >
+        <form action="" method="POST" style={{ overflowY: "auto" }}  >
+          <div className="Signup_subParent-container" onClick={click}>
             <div className="top-heading-signup-block">
               <div className="x-symbol" onClick={() => navigate(-1)}>
                 X
               </div>
               <div className="step-top">Step 1 of 5</div>
             </div>
-            <div className="overflow-signup">
-              <ContentWrapper>
+            <div className="overflow-signup" >
+              <ContentWrapper click={()=>setToggle(false)} >
                 <h1 className="sub-heading">Create your account</h1>
 
                 <label
@@ -759,16 +763,16 @@ const SignUp = () => {
                   >
                     Month
                     {selectedMonth && (
-                      <p className="selcted-month-text "  >{selectedMonth}</p>
+                      <p className="selcted-month-text">{selectedMonth}</p>
                     )}
                     {/* <div style={{backgroundColor:"red",height:"30px"}}> */}
                     <div
-                      ref={divRef}
+                      
                       className="carot-symbol-month" 
                       onClick={Toggle}
                     >
-                      <div style={{ height: "30px", width: "30px"}}>
-                        <PiCaretDownBold />
+                      <div className="carot-month-child" style={{ height: "30px", width: "30px"}}>
+                        <PiCaretDownBold className="carot-month-child"/>
                       </div>
                     </div>
                     {/* </div> */}
@@ -776,13 +780,11 @@ const SignUp = () => {
                       <div className="dropdown-content-month" >
                         {month.map((value, index) => (
                           // <div  >
-                          <div
-                            className="dynamic-generated-month " 
+                          <div 
+                            className={`dynamic-generated-month ${hovered===index?"hovering-month":""}`}
                             key={index}
-                            onClick={(e) => selectMonth(value.name, e)}
-                            // style={elementStyle}
-                            // onMouseLeave={handleMouseLeave}
-                           
+                            onClick={(e) => selectMonth(value.name, e)} 
+                            onMouseEnter={() => clickthree(index)}
                           >
                             {value.name}
                           {/* </div> */}
@@ -808,7 +810,7 @@ const SignUp = () => {
                         {day.map((value, index) => (
                           <div
                             className="dynamic-generated-day" 
-                           
+
                             key={index}
                             onClick={(e) => selectDay(value.value, e)}
                           >

@@ -13,6 +13,7 @@
   bottom: 0;
   top: 0;
   background-color: rgba(91, 112, 131, 0.4);
+  // background-color: red;
 }
 
 .signup-parent-container {
@@ -193,7 +194,7 @@
 
   hr {
     // margin-bottom: 20px;
-    background-color: red;
+    // background-color: red;
     bottom: 20px;
   }
 
@@ -214,7 +215,7 @@
 
     .month-parent {
       height: 55px;
-      // background-color: red;
+      background-color: black;
       border: 1px solid rgb(51, 54, 57);
       width: 210px;
       border-radius: 4px 4px;
@@ -293,10 +294,16 @@
       padding-left: 8px;
       padding-top: 2px;
       cursor: pointer;
-      &:hover {
-        // width: 100%;
+      // background-color: red;
+      // &.hovering-month {
+      //   // width: 100%;
+      //   background-color: #99c8ff;
+      //   color: black;
+      // }
+      &.hovering-month {
         background-color: #99c8ff;
         color: black;
+
       }
 
       @include md {
@@ -459,6 +466,7 @@
 
 .overflow-signup {
   // overflow-y: auto;
+  // background-color: red;
   // overflow-y: auto;
   position: relative;
   @include md {
