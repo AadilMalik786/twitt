@@ -1,0 +1,215 @@
+@import "../../mixins.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body{
+  overflow-x: hidden;
+}
+.home-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  position: relative;
+  // overflow-x: hidden;
+  
+  
+  @include md {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .home-first-container {
+    height: 300px;
+    width: 300px;
+    // background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 220px;
+
+    @include md {
+      height: 50px;
+      top: 20px;
+      padding: 50px;
+      position: static;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .twitter-main-image {
+      height: 290px;
+      width: 300px;
+      background-size: cover;
+      @include md {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+  .home-second-container {
+    color: white;
+    // background-color: red;
+    height: 550px;
+    position: absolute;
+    right: 50px;
+    overflow: hidden;
+
+    @include md {
+      top: 100px;
+      width: 100%;
+      position: static;
+      padding: 30px;
+      height: 100%;
+    }
+
+    .heading-second-container-first-child {
+      font-size: 55px;
+      // background-color: green;
+    }
+    .home-second-container-second-child {
+      font-size: 30px;
+    }
+
+    .signup-with-google-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      cursor: pointer;
+      border: none;
+
+      .google_icon-fcGoogle {
+        display: flex;
+        font-size: 23px;
+      }
+      .googletext {
+        display: flex;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .signup-with-apple-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      cursor: pointer;
+      gap: 5px;
+      font-size: 14px;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      border: none;
+
+      .apple_icon-aiApple {
+        display: flex;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+      .applefont {
+        display: flex;
+        font-size: 23px;
+      }
+    }
+    .horizontal_line {
+      border: none;
+      border-top: 1px solid;
+      width: 27%;
+      display: inline-block;
+      margin: 4px 5px;
+      margin-top: 15px;
+    }
+    .heading-second-container-first-child {
+      margin-bottom: 3rem;
+    }
+    .create_Account-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
+      cursor: pointer;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      background-color: #1d9bf0;
+      color: white;
+      border: none;
+    }
+    .text_inside-create-button {
+      margin-top: 10px;
+      word-spacing: -1px;
+      letter-spacing: -1px;
+      font-size: 10px;
+      a {
+        color: rgb(29, 155, 240);
+      }
+    }
+    .Signin-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 20px;
+      gap: 9px;
+      font-size: 14px;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      background-color: black;
+      color: rgb(29, 155, 240);
+      border: none;
+      outline: 0.5px solid rgb(83, 100, 113);
+    }
+  }
+}
+.already-account{
+  margin-top: 60px;
+}
+footer{
+  display: flex;
+  height: 100px;
+  // background-color: red;
+  // background-color: red;
+  justify-content: center;
+  align-items: center;
+  // background-color: orange;
+  width: 100%;
+  // overflow: hidden;
+  background-color: black;
+  margin-top: 740px;
+  @include md{
+      height: 40vh;
+  }
+}
+ul{
+  display: flex;
+  max-width: 90vw;
+  justify-content: center;
+  // background-color: blue  ;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  // height: 60px;
+  font-size: 14px;
+  list-style: none;
+  color: #71767b;
+  overflow: hidden;
+ 
+}
