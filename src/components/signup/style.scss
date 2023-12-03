@@ -285,7 +285,7 @@
         left: 1px;
         bottom: 36px;
         width: 98%;
-        height: 420px;
+        height: 380px;
         font-size: 17px;
       }
     }
@@ -307,7 +307,7 @@
       }
 
       @include md {
-        margin-bottom: 14px;
+        margin-bottom: 10px;
       }
     }
   }
@@ -368,6 +368,7 @@
 
       @include md {
         width: 96%;
+        height: 380px;
       }
 
       .dynamic-generated-day {
@@ -442,6 +443,7 @@
       right: 3px;
       @include md {
         width: 98%;
+        height: 380px;
         right: 1px;
       }
       .dynamic-generated-year {
