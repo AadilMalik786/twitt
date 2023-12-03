@@ -19,7 +19,8 @@ const ConfirmSignUp = () => {
             <div>Step 3 of 5</div>
           </div>
           <ContentWrapper>
-            <h2 className="confirm-heading-signup">Create your account</h2>
+          <div className="overflow-confirm">
+            <h2 className="confirm-heading-signup">Create your account</h2> 
 
             <label className="label-click-confirm">
               <div
@@ -60,6 +61,7 @@ const ConfirmSignUp = () => {
                 <input className="first-name-input" />
               </div>
             </label>
+            </div>
             <div className="confirm-policy">
               By signing up, you agree to the <a href="">Terms of Service</a>{" "}
               and <a href="">Privacy Policy</a>, including{" "}
@@ -68,7 +70,7 @@ const ConfirmSignUp = () => {
               outlined in our Privacy Policy, like keeping your account secure
               and personalizing our services, including ads.{" "}
               <a href=""> Learn more </a>. Others will be able to find you by
-              email or phone number, when provided, unless you choose otherwise{" "}
+              email or phone number, when provided, unless you choose otherwise{" "} 
               <a href=""> here</a>.
             </div>
             <button className="confirm-signup-button">Sign up</button>

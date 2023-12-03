@@ -374,7 +374,7 @@
         padding-left: 8px;
         padding-top: 6px;
         cursor: pointer;
-        &:hover {
+        &.hovering-day {
           // width: 100%;
           background-color: #99c8ff;
           color: black;
@@ -450,7 +450,7 @@
         padding-left: 8px;
         padding-top: 6px;
         // cursor: pointer;
-        &:hover {
+        &.hovering-year {
           // width: 100%;
           background-color: #99c8ff;
           color: black;
@@ -465,13 +465,12 @@
 }
 
 .overflow-signup {
-  // overflow-y: auto;
-  // background-color: red;
-  // overflow-y: auto;
+  
   position: relative;
   @include md {
     overflow-y: auto;
     // overflow-x: hidden;
+    // background-color: blue;
   }
 }
 .first_name-input-container {

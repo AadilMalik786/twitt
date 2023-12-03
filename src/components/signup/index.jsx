@@ -30,8 +30,9 @@ const SignUp = () => {
   const [monthHighlight, setMonthHighlight] = useState(false);
   const [dayHighlight, setDayHighlight] = useState(false);
   const [yearHighlight, setYearHighlight] = useState(false);
-  const [hovered, setHovered] = useState(null);
-  // const [color,setColor]=useState("white")
+  const [dayHovered, setDayHovered] = useState(null);
+  const [monthHovered, setMonthHovered] = useState(null);
+  const [yearHovered, setYearHovered] = useState(null);
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -581,11 +582,17 @@ const SignUp = () => {
     setYearHighlight(false);
   };
 
-  const clickthree = (index) => {
-    console.log("color");
-    setHovered(index);
+  const MonthClick = (index) => {
+    setMonthHovered(index);
   };
 
+  const DayClick=(index)=>{
+    setDayHovered(index)
+  }
+
+  const YearClick=(index)=>{
+    setYearHovered(index)
+  }
   return ReactDOM.createPortal(
     <>
       <div className="modal-wrapper" onClick={clicktwo}></div>
@@ -733,11 +740,11 @@ const SignUp = () => {
                           // <div  >
                           <div
                             className={`dynamic-generated-month ${
-                              hovered === index ? "hovering-month" : ""
+                              monthHovered === index ? "hovering-month" : ""
                             }`}
                             key={index}
                             onClick={(e) => selectMonth(value.name, e)}
-                            onMouseEnter={() => clickthree(index)}
+                            onMouseEnter={() => MonthClick(index)}
                           >
                             {value.name}
                             {/* </div> */}
@@ -770,9 +777,10 @@ const SignUp = () => {
                       <div className="dropdown-content-day">
                         {day.map((value, index) => (
                           <div
-                            className="dynamic-generated-day"
+                            className={`dynamic-generated-day ${dayHovered===index?"hovering-day":""}`}
                             key={index}
                             onClick={(e) => selectDay(value.value, e)}
+                            onMouseEnter={()=>DayClick(index)}
                           >
                             {value.value}
                           </div>
@@ -802,9 +810,10 @@ const SignUp = () => {
                       <div className="dropdown-content-year">
                         {year.map((value, index) => (
                           <div
-                            className="dynamic-generated-year"
+                            className={`dynamic-generated-year ${yearHovered===index?"hovering-year":""}`}
                             key={index}
                             onClick={(e) => selectYear(value.value, e)}
+                            onMouseEnter={()=>YearClick(index)}
                           >
                             {value.value}
                           </div>

@@ -17,6 +17,9 @@
         font-size: 30px;
         margin-top: 25px;
         margin-bottom: 10px;
+        @include md{
+          font-size: 28px;
+        }
     }
   .confirm-subparent-container {
     overflow: hidden;
@@ -32,6 +35,15 @@
     left: 30%;
     border-radius: 20px 20px;
     // gap: 10px;
+    @include md {
+      top: 0px;
+      left: 0%;
+      width: 100%;
+      overflow-y: auto;
+      height: 100%;
+      border-radius: 0;
+    }
+
     .top-heading-signup-confirm {
       height: 55px;
 
@@ -112,6 +124,9 @@
     & a:hover{
       text-decoration: underline;
     }
+    @include md{
+      margin-top: 5vh;
+    }
 }
 .confirm-signup-button{
     border-radius: 24px 24px;
@@ -122,9 +137,27 @@
     color: white;
     border: none;
     margin-top: 20px;
+    @include md{
+      width: 100%;
+      
+    }
 }
 .input-placeholder{
   padding: 10px;
   font-size: 14px;
   color:  rgb(51, 54, 57);
+}
+.overflow-confirm{
+  @include md {
+    position: relative;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 40vh;
+    
+    // overflow-x: hidden;
+    // background-color: blue;
+  
+  }
+
 }

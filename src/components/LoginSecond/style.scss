@@ -35,18 +35,30 @@
     height: 55px;
     font-size: 18px;
     border-radius: 30px 30px;
+
+    @include md{
+      margin-top: 30vh;
+      margin-bottom: 50px;
+      width: 100%;
+      // background-color: red;
+    }
  }
 
   @include md {
     top: 0px;
     left: 0%;
     width: 100%;
-    height: 100vh;
-    // overflow-y: auto;
+    overflow-y: auto;
+    height: 100%;
+    border-radius: 0;
   }
 
   .login-logox-container {
     width: 460px;
+    @include md{
+      // background-color: blue;
+      width: 460px;
+    }
   }
 
   .x-image-logo-parent {
@@ -55,9 +67,15 @@
     justify-content: center;
     width: 500px;
     height: 60px;
-
+    
     .login-onclick-x-wrapper {
       width: 430px;
+      @include md{
+        width: 430px;
+        display: flex;
+        justify-content: start;
+        // background-color: red;
+      }
 
       .login-cross-icon {
         display: flex;
@@ -67,23 +85,32 @@
         justify-content: center;
         // margin-left: 100px;
         margin-left: -30px;
-        // background-color: red;
+        // background-color: green;
+        @include md{
+          // width: 50%;
+          // justify-content: flex-end;
+          margin-left: -1px;
+        }
       }
+      
     }
     .image-component-logox {
         height: 25px;
         width: 25px;
         background-size: cover;
       }
+      @include md{
+        width: 100%;
+        // background-color: aqua;
+      }
   }
   .overflow-loginin {
-    // background-color: blue;
-
+    
     
     .second-input-pass{
-        width: 440px;
-        height: 60px;;
-        // background-color: green;
+      width: 440px;
+      height: 60px;;
+      // background-color: green;
         border-radius: 5px 5px;
         background-color: black;
         border: 1px solid rgb(51, 54, 57);
@@ -92,9 +119,21 @@
         // border: none;
         // outline: none;
         margin-top: 30px;
+        @include md{
+          width: 100%;
+        }
+      }
+      @include md {
+      // background-color: blue;
+      // overflow-y: auto;  
+      // height: 80vh;
+      width: 100%;
     }
-    @include md {
-      overflow-y: auto;
+    h1{
+      @include md{
+        font-size: 25px;    
+        // background-color: red;
+      }
     }
   }
 }
@@ -108,6 +147,9 @@
     margin-top: 20px;
    &.password-outline{
     outline: 1px solid #1d9bf0;
+   }
+   @include md{
+    width: 100%;
    }
 }
 .user-name-in1{
@@ -143,7 +185,7 @@
       position: absolute;
       z-index: 1;
       @include md{
-        width: 230px;
+        width: 90%;
       }
     }
    
@@ -167,5 +209,5 @@
               color: #1d9bf0;
         }
      }
-  
+ 
 }
