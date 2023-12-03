@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
-// import Customize from "../customize/Customize"
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -29,16 +28,11 @@ const SignUp = () => {
   const [phoneError, setPhoneError] = useState(false);
   const [phoneRedOutline, setPhoneRedOutline] = useState(false);
   const [monthHighlight, setMonthHighlight] = useState(false);
-  const [dayHighlight,setDayHighlight] =useState(false);
-  const [yearHighlight,setYearHighlight] =useState(false);
+  const [dayHighlight, setDayHighlight] = useState(false);
+  const [yearHighlight, setYearHighlight] = useState(false);
   const [hovered, setHovered] = useState(null);
   // const [color,setColor]=useState("white")
   const navigate = useNavigate();
-  const divRef = useRef();
-  // const monRef =useRef();
-  const dayRef = useRef();
-  const yearRef = useRef();
-
 
   const [user, setUser] = useState({
     name: "",
@@ -67,28 +61,6 @@ const SignUp = () => {
       setPhoneRedOutline(false);
       setPhoneBorder(true);
     }
-
-    // if(e.target.name=="email"){
-    //   e.target.value.length=null;
-    //   const stringemail = e.target.value;
-    // const emailRegex = /^[0-9]{10}$/;
-    // if(phoneRegex.test(stringNumber)){
-    //   const number = parseInt(stringNumber);
-    //   setPhoneError(false)
-    //   setPhoneBorder(true)
-    //   setPhoneRedOutline(false)
-    // }
-    // else{
-    //   setPhoneBorder(false)
-    //   setPhoneRedOutline(true)
-    //   setPhoneError(true)
-    // }
-    // if(e.target.value.length==0){
-    //   setPhoneError(false)
-    //   setPhoneRedOutline(false)
-    //   setPhoneBorder(true)
-    // }
-    // }
   };
 
   useEffect(() => {
@@ -418,8 +390,9 @@ const SignUp = () => {
   ];
 
   const Toggle = (e) => {
-    setToggle((prev)=>!prev) ;
-   
+    setToggle((prev) => !prev);
+    setDayHighlight(false);
+    setYearHighlight(false);
     setToggleSecond(false);
     setToggleThird(false);
     const selectMonth = e.target.value;
@@ -428,6 +401,8 @@ const SignUp = () => {
 
   const ToggleSecond = (e) => {
     setToggleSecond(!togglesecond);
+    setMonthHighlight(false);
+    setYearHighlight(false);
     setToggle(false);
     setToggleThird(false);
     const selectDay = e.target.value;
@@ -438,22 +413,31 @@ const SignUp = () => {
     setToggleThird(!togglethird);
     setToggle(false);
     setToggleSecond(false);
+    setMonthHighlight(false);
+    setDayHighlight(false);
     const selectYear = e.target.value;
     setYears(selectYear);
   };
 
-  
+  const selectMonth = (monthName, e) => {
+    setToggle(false);
+    setSelectedMonth(monthName);
+    setUser({ ...user, monthingname: monthName });
+    e.stopPropagation();
+  };
 
-  const selectDay = (dayName) => {
+  const selectDay = (dayName, e) => {
     setToggleSecond(false);
     setSelectedDay(dayName);
     setUser({ ...user, daynaming: dayName });
+    e.stopPropagation();
   };
 
-  const selectYear = (yearName) => {
+  const selectYear = (yearName, e) => {
     setToggleThird(false);
     setSelectedYear(yearName);
     setUser({ ...user, yearnaming: yearName });
+    e.stopPropagation();
   };
 
   const Place = () => {
@@ -566,76 +550,47 @@ const SignUp = () => {
 
     setPhoneBorder(false);
   };
-  
-  
- 
- 
 
-  const handleClickOutsideSecond = (event) => {
-    if (dayRef.current && !dayRef.current.contains(event.target)) {
-      setDayHighlight(false)
+  const click = (e) => {
+    const targetList = e.target.classList;
+    if (
+      !(
+        targetList.contains("carot-symbol-month") ||
+        targetList.contains("carot-month-child") ||
+        targetList.contains("carot-symbol-day") ||
+        targetList.contains("carot-day-child") ||
+        targetList.contains("carot-symbol-year") ||
+        targetList.contains("carot-year-child")
+      )
+    ) {
+      setToggle(false);
+      setMonthHighlight(false);
       setToggleSecond(false);
-    }
-  };
-
-  const handleClickOutsideThird = (event) => {
-    if (yearRef.current && !yearRef.current.contains(event.target)) {
-      setYearHighlight(false);
       setToggleThird(false);
+      setDayHighlight(false);
+      setYearHighlight(false);
     }
   };
- 
-  
-  useEffect(() => {
-    const handleClick = (event) => {
-     
-      
-      handleClickOutsideSecond(event);
-      handleClickOutsideThird(event);
-      
-    };
 
-    document.addEventListener("click", handleClick);
-    return () => {
-      
-      document.removeEventListener("click", handleClick);
-    };
-      
-  }, []);
-
-  const selectMonth = (monthName, e) => {
-    
+  const clicktwo = () => {
     setToggle(false);
-    e.stopPropagation();
-    setSelectedMonth(monthName);
-    setUser({ ...user, monthingname: monthName });
-  };
-  
-  const click =(e)=>{
-    const targetList=e.target.classList;
-   if (!(targetList.contains('carot-symbol-month')  || targetList.contains("carot-month-child"))) {
-    setToggle(false);
+    setToggleSecond(false);
+    setToggleThird(false);
     setMonthHighlight(false);
-  }
-}
+    setDayHighlight(false);
+    setYearHighlight(false);
+  };
 
-const clicktwo=()=>{
-  setToggle(false);
-  setMonthHighlight(false)
-}
-
-const clickthree=(index)=>{
-  console.log("color");
-  // e.stopPropagation();
-  setHovered(index);
-}
-
+  const clickthree = (index) => {
+    console.log("color");
+    setHovered(index);
+  };
 
   return ReactDOM.createPortal(
     <>
-      <div className="modal-wrapper" onClick={clicktwo} ></div>
-      <div className="signup-parent-container" >
-        <form action="" method="POST" style={{ overflowY: "auto" }}  >
+      <div className="modal-wrapper" onClick={clicktwo}></div>
+      <div className="signup-parent-container">
+        <form action="" method="POST" style={{ overflowY: "auto" }}>
           <div className="Signup_subParent-container" onClick={click}>
             <div className="top-heading-signup-block">
               <div className="x-symbol" onClick={() => navigate(-1)}>
@@ -643,8 +598,8 @@ const clickthree=(index)=>{
               </div>
               <div className="step-top">Step 1 of 5</div>
             </div>
-            <div className="overflow-signup" >
-              <ContentWrapper click={()=>setToggle(false)} >
+            <div className="overflow-signup">
+              <ContentWrapper click={() => setToggle(false)}>
                 <h1 className="sub-heading">Create your account</h1>
 
                 <label
@@ -749,68 +704,73 @@ const clickthree=(index)=>{
                 <h3>Date of Birth</h3>
                 <p className="DOB_terms-condition">
                   This will not be shown publicly. Confirm your own age, even if
-                  this account is for a business, a pet, or something
-                  else.
+                  this account is for a business, a pet, or something else.
                 </p>
-                <div className="top-parent_month-day-year" >
-                
-                  <div 
+                <div className="top-parent_month-day-year">
+                  <div
                     className={`month-parent  ${
                       monthHighlight ? "month-highlight-onclick" : ""
                     } `}
-                    
-                    onClick={()=>setMonthHighlight(true)}
+                    onClick={() => setMonthHighlight(true)}
                   >
                     Month
                     {selectedMonth && (
                       <p className="selcted-month-text">{selectedMonth}</p>
                     )}
                     {/* <div style={{backgroundColor:"red",height:"30px"}}> */}
-                    <div
-                      
-                      className="carot-symbol-month" 
-                      onClick={Toggle}
-                    >
-                      <div className="carot-month-child" style={{ height: "30px", width: "30px"}}>
-                        <PiCaretDownBold className="carot-month-child"/>
+                    <div className="carot-symbol-month" onClick={Toggle}>
+                      <div
+                        className="carot-month-child"
+                        style={{ height: "30px", width: "30px" }}
+                      >
+                        <PiCaretDownBold className="carot-month-child" />
                       </div>
                     </div>
                     {/* </div> */}
                     {toggle && (
-                      <div className="dropdown-content-month" >
+                      <div className="dropdown-content-month">
                         {month.map((value, index) => (
                           // <div  >
-                          <div 
-                            className={`dynamic-generated-month ${hovered===index?"hovering-month":""}`}
+                          <div
+                            className={`dynamic-generated-month ${
+                              hovered === index ? "hovering-month" : ""
+                            }`}
                             key={index}
-                            onClick={(e) => selectMonth(value.name, e)} 
+                            onClick={(e) => selectMonth(value.name, e)}
                             onMouseEnter={() => clickthree(index)}
                           >
                             {value.name}
-                          {/* </div> */}
+                            {/* </div> */}
                           </div>
                         ))}
                       </div>
                     )}
                   </div>
-                  <div className={`day-parent ${dayHighlight?"day-borderlight":""}`} onClick={()=>setDayHighlight(true)}>
+                  <div
+                    className={`day-parent ${
+                      dayHighlight ? "day-borderlight" : ""
+                    }`}
+                    onClick={() => setDayHighlight(true)}
+                  >
                     Day
                     {selectedday && (
-                      <p className="selected-day-text" >{selectedday}</p>
+                      <p className="selected-day-text">{selectedday}</p>
                     )}
                     {/* <div  > */}
-                      <div className="carot-symbol-day" ref={dayRef}  onClick={ToggleSecond}>
-                        <div style={{height:"30px",width:"30px"}}>
-                        <PiCaretDownBold />
+                    <div className="carot-symbol-day" onClick={ToggleSecond}>
+                      <div
+                        className="carot-day-child"
+                        style={{ height: "30px", width: "30px" }}
+                      >
+                        <PiCaretDownBold className="carot-day-child" />
                         {/* </div> */}
                       </div>
                     </div>
                     {togglesecond && (
-                      <div   className="dropdown-content-day" >
+                      <div className="dropdown-content-day">
                         {day.map((value, index) => (
                           <div
-                            className="dynamic-generated-day" 
-
+                            className="dynamic-generated-day"
                             key={index}
                             onClick={(e) => selectDay(value.value, e)}
                           >
@@ -820,14 +780,22 @@ const clickthree=(index)=>{
                       </div>
                     )}
                   </div>
-                  <div className={`year-parent ${yearHighlight?"year-borderlight":""}`} onClick={()=>setYearHighlight(true)}>
+                  <div
+                    className={`year-parent ${
+                      yearHighlight ? "year-borderlight" : ""
+                    }`}
+                    onClick={() => setYearHighlight(true)}
+                  >
                     Year
                     {selectedYear && (
                       <p className="selected-year-text">{selectedYear}</p>
                     )}
-                      <div ref={yearRef} className="carot-symbol-year" onClick={ToggleThird}>
-                    <div style={{height:"30px",width:"30px"}}>
-                        <PiCaretDownBold />
+                    <div className="carot-symbol-year" onClick={ToggleThird}>
+                      <div
+                        className="carot-year-child"
+                        style={{ height: "30px", width: "30px" }}
+                      >
+                        <PiCaretDownBold className="carot-year-child" />
                       </div>
                     </div>
                     {togglethird && (
@@ -848,11 +816,11 @@ const clickthree=(index)=>{
               </ContentWrapper>
             </div>
             <ContentWrapper>
-            <div className="signup-next-parent-step">
-              <button onClick={PostData} className="next-step-button">
-                Next
-              </button>
-            </div>
+              <div className="signup-next-parent-step">
+                <button onClick={PostData} className="next-step-button">
+                  Next
+                </button>
+              </div>
             </ContentWrapper>
           </div>
         </form>
