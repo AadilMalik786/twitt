@@ -11,6 +11,7 @@ const Customize = () => {
     setShow((prevShow) => !prevShow);
   };
   const navigate = useNavigate();
+  
   return (
     <>
       <div className="modal-wrappers"></div>
@@ -62,7 +63,7 @@ const Customize = () => {
               </ContentWrapper>
         </div>
       </div>
-      <Outlet />
+      <Outlet/>
     </>
   );
 };

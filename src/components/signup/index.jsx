@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
+// import ConfirmSignUp from "../confirmsignup/ConfirmSignUp";
+import Customize from "../customize/Customize";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -593,6 +595,7 @@ const SignUp = () => {
   const YearClick=(index)=>{
     setYearHovered(index)
   }
+  
   return ReactDOM.createPortal(
     <>
       <div className="modal-wrapper" onClick={clicktwo}></div>

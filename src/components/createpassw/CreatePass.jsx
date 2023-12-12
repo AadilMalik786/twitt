@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import ReactDom from "react-dom";
+import React from "react";
 import "./style.scss";
-import Image from "../image/Img";
-import twitterimage from "../../assets/twitterimage.png";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
-// import SignIn from "../signin";
-// import Modal from "../Model";
 
-const LoginSecond = ({ userName }) => {
+const CreatePass = () => {
   const [passwordSlide, setPasswordSlide] = useState(false);
   const [passwordBorder, setPasswordBorder] = useState(false);
   const navigate = useNavigate();
@@ -29,30 +24,17 @@ const LoginSecond = ({ userName }) => {
   };
   return (
     <>
-      <div className="login-wrapper"></div>
-      <div className="Login-parent-container">
-        <div className="Login_subParent-container">
-          <ContentWrapper>
-            <div className="x-image-logo-parent">
-              <div className="login-onclick-x-wrapper">
-                <span onClick={() => navigate(-2)} className="login-cross-icon">
-                  x
-                </span>
-              </div>
-              <div className="login-logox-container">
-                <Image src={twitterimage} className="image-component-logox" />
-              </div>
-            </div>
-            {/* <div style={{  }}>helo</div> */}
-            <div className="overflow-loginin">
-              <h1>Enter your password</h1>
+      <div className="createpassword-model-wrpapper"></div>
+      <div className="create-container">
+        <div className="subparent-create-container">
+          <div className="top-heading-signup-confirm">
+            <div>Step 4 of 5</div>
+          </div>
+          <div className="overflow-loginin">
+            <ContentWrapper>
+              <h1>You'll need a Password</h1>
               <div className="pass-word-in2">
-                <input
-                  className="second-input-pass"
-                  type="text"
-                  readOnly
-                  value={userName}
-                />
+                Make sure its 8 character or more.
               </div>
               <label
                 className={`password-lable ${
@@ -78,16 +60,15 @@ const LoginSecond = ({ userName }) => {
                   />
                 </div>
               </label>
-            </div>
-            <ContentWrapper>
-              <button className="Login-button" onClick={Navigation} >
+            <button className="Login-button" >
                 Log in
               </button>
             </ContentWrapper>
-          </ContentWrapper>
+            
+          </div>
         </div>
       </div>
     </>
   );
 };
-export default LoginSecond;
+export default CreatePass;

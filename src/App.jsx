@@ -8,6 +8,7 @@ import NewsFeed from "./components/Newsfeed/NewsFeed";
 import LoginSecond from "./components/LoginSecond/LoginSecond";
 import Customize from "./components/customize/Customize";
 import ConfirmSignUp from "./components/confirmsignup/ConfirmSignUp";
+import CreatePass from "./components/createpassw/CreatePass";
 
 const App = () => {
   return (
@@ -20,7 +21,9 @@ const App = () => {
             </Route>
             <Route path="signup" element={<SignUp />}>
               <Route path="cus" element={<Customize />}>
-                <Route path="con" element={<ConfirmSignUp />} />
+                <Route path="con" element={<ConfirmSignUp />} >
+                  <Route path="pass" element={<CreatePass/>}/>
+                </Route>
               </Route>
             </Route>
           </Route>

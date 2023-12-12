@@ -1,11 +1,12 @@
 import React from "react";
 import "./style.scss";
 import { IoMdArrowBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
 
 const ConfirmSignUp = () => {
   const navigate = useNavigate();
+
 
   return (
     <>
@@ -32,7 +33,7 @@ const ConfirmSignUp = () => {
                 >
                   <span className="input-placeholder">Name</span>
                 </div>
-                <input className="first-name-input" />
+                <input className="first-name-input" style={{color:"white"}} />
               </div>
             </label>
             <label className="label-click-confirm">
@@ -73,10 +74,11 @@ const ConfirmSignUp = () => {
               email or phone number, when provided, unless you choose otherwise{" "} 
               <a href=""> here</a>.
             </div>
-            <button className="confirm-signup-button">Sign up</button>
+            <button className="confirm-signup-button" onClick={()=>navigate("pass")}>Sign up</button>
           </ContentWrapper>
         </div>
       </div>
+      <Outlet/>
     </>
   );
 };
