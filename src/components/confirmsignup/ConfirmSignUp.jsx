@@ -3,10 +3,18 @@ import "./style.scss";
 import { IoMdArrowBack } from "react-icons/io";
 import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
+// import { UseSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux";
+import { FaCircleCheck } from "react-icons/fa6";
 
 const ConfirmSignUp = () => {
   const navigate = useNavigate();
-
+  const receivedName = useSelector((state) => state.reducerName);
+  const receivedPhone = useSelector((state) => state.reducerPhone);
+  const receivedMonth = useSelector((state) => state.reducerMonth);
+  const receivedDay = useSelector((state) => state.reducerDay);
+  const receivedYear = useSelector((state) => state.reducerYear);
+  // console.log(receivedData);
 
   return (
     <>
@@ -20,48 +28,65 @@ const ConfirmSignUp = () => {
             <div>Step 3 of 5</div>
           </div>
           <ContentWrapper>
-          <div className="overflow-confirm">
-            <h2 className="confirm-heading-signup">Create your account</h2> 
+            <div className="overflow-confirm">
+              <h2 className="confirm-heading-signup">Create your account</h2>
 
-            <label className="label-click-confirm">
-              <div
-                onClick={() => navigate(-2)}
-                className="first_name-input-confirm-signup"
-              >
+              <label className="label-click-confirm">
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  onClick={() => navigate(-2)}
+                  className="first_name-input-confirm-signup"
                 >
-                  <span className="input-placeholder">Name</span>
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span className="input-placeholder">Name</span>
+                  </div>
+                  <input
+                    className="first-name-input"
+                    value={receivedName.data}
+                    readOnly
+                    style={{ color: "white" }}
+                  />
+                <div className="checkbox-green" ><FaCircleCheck /></div>
                 </div>
-                <input className="first-name-input" style={{color:"white"}} />
-              </div>
-            </label>
-            <label className="label-click-confirm">
-              <div
-                onClick={() => navigate(-2)}
-                className="first_name-input-confirm-signup"
-              >
+                
+              </label>
+              <label className="label-click-confirm">
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  onClick={() => navigate(-2)}
+                  className="first_name-input-confirm-signup"
                 >
-                  <span className="input-placeholder">Phone</span>
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span className="input-placeholder">Phone</span>
+                  </div>
+                  <input
+                    className="first-name-input"
+                    value={receivedPhone.data}
+                    readOnly
+                  />
+                   <div className="checkbox-green" ><FaCircleCheck /></div>
                 </div>
-                <input className="first-name-input" />
-              </div>
-            </label>
-            <label className="label-click-confirm">
-              <div
-                onClick={() => navigate(-2)}
-                className="first_name-input-confirm-signup"
-              >
+              </label>
+              <label className="label-click-confirm">
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  onClick={() => navigate(-2)}
+                  className="first_name-input-confirm-signup"
                 >
-                  <span className="input-placeholder">Date of Birth</span>
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span className="input-placeholder">Date of Birth</span>
+                  </div>
+                  <input
+                    className="first-name-input"
+                    value={`${receivedMonth.data} ${receivedDay.data}, ${receivedYear.data}`}
+                    readOnly
+                  />
+                   <div className="checkbox-green" ><FaCircleCheck /></div>
                 </div>
-                <input className="first-name-input" />
-              </div>
-            </label>
+              </label>
             </div>
             <div className="confirm-policy">
               By signing up, you agree to the <a href="">Terms of Service</a>{" "}
@@ -71,14 +96,19 @@ const ConfirmSignUp = () => {
               outlined in our Privacy Policy, like keeping your account secure
               and personalizing our services, including ads.{" "}
               <a href=""> Learn more </a>. Others will be able to find you by
-              email or phone number, when provided, unless you choose otherwise{" "} 
+              email or phone number, when provided, unless you choose otherwise{" "}
               <a href=""> here</a>.
             </div>
-            <button className="confirm-signup-button" onClick={()=>navigate("pass")}>Sign up</button>
+            <button
+              className="confirm-signup-button"
+              onClick={() => navigate("pass")}
+            >
+              Sign up
+            </button>
           </ContentWrapper>
         </div>
       </div>
-      <Outlet/>
+      <Outlet />
     </>
   );
 };

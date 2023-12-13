@@ -33,3 +33,70 @@
 // // export default crossing;
 // export default create;
 // export {signCross};
+const initialState = {
+    data: null,
+  };
+  const reducerName = (state = initialState, action) => {
+    switch (action.type) {
+      case 'UPDATE_DATA_Name':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
+  const reducerPhone = (state = initialState, action) => {
+    switch (action.type) {
+      case 'UPDATE_DATA_Phone':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
+
+  const reducerMonth = (state = initialState, action) => {
+    switch (action.type) {
+      case 'UPDATE_DATA_Month':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
+
+  const reducerDay = (state = initialState, action) => {
+    switch (action.type) {
+      case 'UPDATE_DATA_Day':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
+  
+  const reducerYear = (state = initialState, action) => {
+    switch (action.type) {
+      case 'UPDATE_DATA_Year':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
+
+  export default reducerName;
+  export {reducerPhone}
+  export {reducerMonth}
+  export {reducerDay}
+  export {reducerYear}

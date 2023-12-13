@@ -6,7 +6,9 @@ import ReactDOM from "react-dom";
 import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
 // import ConfirmSignUp from "../confirmsignup/ConfirmSignUp";
-import Customize from "../customize/Customize";
+// import Customize from "../customize/Customize";
+import { useDispatch } from "react-redux";
+import { updateDataName,updateDataPhone,updateDataMonth,updateDataDay,updateDataYear } from "../../action/actions";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -36,6 +38,7 @@ const SignUp = () => {
   const [monthHovered, setMonthHovered] = useState(null);
   const [yearHovered, setYearHovered] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState({
     name: "",
@@ -64,6 +67,7 @@ const SignUp = () => {
       setPhoneRedOutline(false);
       setPhoneBorder(true);
     }
+    dispatch(updateDataPhone(values));
   };
 
   useEffect(() => {
@@ -426,6 +430,7 @@ const SignUp = () => {
     setToggle(false);
     setSelectedMonth(monthName);
     setUser({ ...user, monthingname: monthName });
+    dispatch(updateDataMonth(monthName));
     e.stopPropagation();
   };
 
@@ -433,6 +438,7 @@ const SignUp = () => {
     setToggleSecond(false);
     setSelectedDay(dayName);
     setUser({ ...user, daynaming: dayName });
+    dispatch(updateDataDay(dayName));
     e.stopPropagation();
   };
 
@@ -440,6 +446,7 @@ const SignUp = () => {
     setToggleThird(false);
     setSelectedYear(yearName);
     setUser({ ...user, yearnaming: yearName });
+    dispatch(updateDataYear(yearName));
     e.stopPropagation();
   };
 
@@ -479,6 +486,7 @@ const SignUp = () => {
     // alert("data stored");
 
     navigate("cus");
+    
     // setSelectedMonth("");
     // setSelectedDay("");
     // setSelectedYear("");
@@ -524,6 +532,8 @@ const SignUp = () => {
     names = e.target.name;
     values = e.target.value;
     setUser({ ...user, [names]: values });
+    dispatch(updateDataName(value));
+
   };
 
   const lableclick = () => {
@@ -595,6 +605,12 @@ const SignUp = () => {
   const YearClick=(index)=>{
     setYearHovered(index)
   }
+  
+
+  // const sendDataToStore = () => {
+  //   const dataToSend = 'Some data';
+  //   dispatch(updateData(dataToSend));
+  // };
   
   return ReactDOM.createPortal(
     <>
@@ -748,6 +764,7 @@ const SignUp = () => {
                             key={index}
                             onClick={(e) => selectMonth(value.name, e)}
                             onMouseEnter={() => MonthClick(index)}
+                            
                           >
                             {value.name}
                             {/* </div> */}
