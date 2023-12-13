@@ -65,6 +65,7 @@ const ConfirmSignUp = () => {
                     className="first-name-input"
                     value={receivedPhone.data}
                     readOnly
+                    
                   />
                    <div className="checkbox-green" ><FaCircleCheck /></div>
                 </div>

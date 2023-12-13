@@ -105,7 +105,10 @@
         position: absolute;
         // z-index: -1;
         // background-color: red;
-        // top: 223px;    
+        // top: 223px;   
+        @include md{
+          width: 85%;
+        }
         }
       }
     }
@@ -160,10 +163,11 @@
   
   }
   .checkbox-green{
-    width: 445px;
+    width: 98%;
     display: flex;
     justify-content: flex-end;
     color: green;
+    // background-color: red;
   }
 
 }
