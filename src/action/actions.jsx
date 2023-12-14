@@ -33,3 +33,7 @@ export const ChangeInputField = (data) => ({
     type: 'Change_Email_Phone',
     payload: data,
   });
+export const SendData = (data) => ({
+    type: 'Send_Email',
+    payload: data,
+  });

@@ -12,6 +12,7 @@ const SignIn = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [userName, setUserName] = useState("");
   const [mobileError,setMobileError]=useState(false);
+  const [emailError,setEmailError] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,16 +24,28 @@ const SignIn = () => {
 
   const SendUserName = (e) =>{
     setUserName(e.target.value);
-    const stringNumber = e.target.value;
+    const strings = e.target.value;
     const phoneRegex = /^[0-9]{10}$/;
-    if (phoneRegex.test(stringNumber)) {
-      const number = parseInt(stringNumber);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (phoneRegex.test(strings)) {
+      // const number = parseInt(strings);
       setMobileError(false);
+      setEmailError(false)
     }
-    
     else{
       setMobileError(true);
+      setEmailError(false)
     }
+
+    if(emailRegex.test(strings)){
+      setMobileError(false);
+      setEmailError(false);
+    }
+    else{
+      setEmailError(true)
+      setMobileError(false);
+    }
+
   } 
 
   const Next=()=>{
@@ -77,10 +90,8 @@ const SignIn = () => {
             </div>
             <div className="firstin">
               <input
-                type="email"
                 placeholder="Phone,email,or username"
                 onChange={SendUserName}
-                
               />
             </div>
             <div>
@@ -95,6 +106,7 @@ const SignIn = () => {
             </div>
             <div className="account">Don't have an account?Sign up</div>
           {mobileError && <div>Mobile is not valid</div>}
+          {/* {emailError && <div>Email is not valid</div> } */}
           </div>
         </>
     }

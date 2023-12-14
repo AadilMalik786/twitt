@@ -3,8 +3,13 @@ import "./style.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
+import { useSelector } from "react-redux";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../../firebase/firebase"
 
 const CreatePass = () => {
+  const receivedData =useSelector((state)=>state.reducerSendEmail);
+  const[password,setPassword]=useState('');
   const [passwordSlide, setPasswordSlide] = useState(false);
   const [passwordBorder, setPasswordBorder] = useState(false);
   const navigate = useNavigate();
@@ -19,9 +24,18 @@ const CreatePass = () => {
     setPasswordBorder(false);
     setPasswordSlide(false);
   };
-  const Navigation = (type) => {
-    navigate("/signin/newsfeed");
-  };
+ 
+
+  const SignUp=(e)=>{
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth,receivedData.data,password)
+     .then((userCredential)=>{
+            console.log(userCredential);
+            navigate("/signin/newsfeed")
+        }).catch((error)=>{
+            console.log(error);
+        })
+  }
   return (
     <>
       <div className="createpassword-model-wrpapper"></div>
@@ -55,12 +69,14 @@ const CreatePass = () => {
                   <input
                     className="first-input-login"
                     type="password"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
                     onFocus={InputFocusOutline}
                     onBlur={InputBlurOutline}
                   />
                 </div>
               </label>
-            <button className="Login-button" >
+            <button className="Login-button" onClick={SignUp}>
                 Log in
               </button>
             </ContentWrapper>

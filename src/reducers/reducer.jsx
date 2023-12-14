@@ -108,6 +108,17 @@ const initialState = {
         return state;
     }
   };  
+  const reducerSendEmail = (state = initialState, action) => {
+    switch (action.type) {
+      case 'Send_Email':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
 
   const ChangeEmail = (state = initialState, action) => {
     switch (action.type) {
@@ -127,3 +138,4 @@ const initialState = {
   export {reducerYear}
   export {ChangeEmail}
  export{reducerEmail}
+ export{reducerSendEmail}

@@ -4,11 +4,16 @@ import { IoMdArrowBack } from "react-icons/io";
 import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
 // import { UseSelector } from "react-redux/es/hooks/useSelector";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaCircleCheck } from "react-icons/fa6";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "firebase/auth";
+// import auth from "../../firebase/firebase"
+import { SendData } from "../../action/actions";
 
 const ConfirmSignUp = () => {
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const receivedName = useSelector((state) => state.reducerName);
   const receivedPhone = useSelector((state) => state.reducerPhone);
   const receivedMonth = useSelector((state) => state.reducerMonth);
@@ -18,6 +23,20 @@ const ConfirmSignUp = () => {
   const receivedEmailInput=useSelector((state)=>state.reducerEmail)
   console.log(receivedEmail);
   console.log(receivedName);
+
+  
+  const Next = async () => {
+    try {
+      // Dispatch the SendData action, assuming it returns a Promise
+      await dispatch(SendData(receivedEmailInput.data));
+  
+      // After the data has been sent successfully, navigate to "pass"
+      navigate("pass");
+    } catch (error) {
+      // Handle any errors that might occur during data sending
+      console.error('Error sending data:', error);
+    }
+  };
 
   return (
     <>
@@ -131,7 +150,7 @@ const ConfirmSignUp = () => {
             </div>
             <button
               className="confirm-signup-button"
-              onClick={() => navigate("pass")}
+              onClick={Next}
             >
               Sign up
             </button>
