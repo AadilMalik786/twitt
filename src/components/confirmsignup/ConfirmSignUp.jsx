@@ -14,7 +14,7 @@ const ConfirmSignUp = () => {
   const receivedMonth = useSelector((state) => state.reducerMonth);
   const receivedDay = useSelector((state) => state.reducerDay);
   const receivedYear = useSelector((state) => state.reducerYear);
-  // console.log(receivedData);
+  console.log(receivedName);
 
   return (
     <>

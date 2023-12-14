@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app"
-
+import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyBFHj84ry9HID8DpU_V-G2wB_QBH1VzWAU",
   authDomain: "twitter-1b1de.firebaseapp.com",
@@ -13,6 +13,6 @@ const firebaseConfig = {
   // Initialize Firebase
  const app = initializeApp(firebaseConfig);
 
- const auth = getAuth(app);
+export const auth = getAuth(app);
 
-export { auth };
+

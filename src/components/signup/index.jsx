@@ -37,6 +37,9 @@ const SignUp = () => {
   const [dayHovered, setDayHovered] = useState(null);
   const [monthHovered, setMonthHovered] = useState(null);
   const [yearHovered, setYearHovered] = useState(null);
+  const [inputValueOne, setInputValueOne] = useState('');
+  const [inputValueTwo, setInputValueTwo] = useState('');
+  const [emailError,setEmailError] =useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -44,12 +47,14 @@ const SignUp = () => {
     name: "",
     phone: "",
   });
+  // console.log(user.phone="");
 
   let names, values, selectionmonth;
   const getUserData = (e) => {
     names = e.target.name;
     values = e.target.value;
-    setUser({ ...user, [names]: values });
+    // console.log(values);
+    // setUser({ ...user, [names]: values });
     const stringNumber = e.target.value;
     const phoneRegex = /^[0-9]{10}$/;
     if (phoneRegex.test(stringNumber)) {
@@ -57,7 +62,9 @@ const SignUp = () => {
       setPhoneError(false);
       setPhoneBorder(true);
       setPhoneRedOutline(false);
+      setEmailError(false);
     } else {
+      setEmailError(false)
       setPhoneBorder(false);
       setPhoneRedOutline(true);
       setPhoneError(true);
@@ -68,7 +75,32 @@ const SignUp = () => {
       setPhoneBorder(true);
     }
     dispatch(updateDataPhone(values));
+    // if(changeInput===true){
+    //   values="";
+    // }
+   setInputValueOne(e.target.value);
   };
+
+  const getUserDataEmail=(e)=>{
+    if (e.target.value.length == 0) {
+      setPhoneError(false);
+      setPhoneRedOutline(false);
+      setPhoneBorder(true);
+    }
+    const inputEmail = e.target.value;
+    setInputValueTwo(inputEmail)
+
+    // Validate email using a regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(emailRegex.test(inputEmail)){
+      setPhoneError(false);
+      setEmailError(false);
+    }
+    else{
+      setPhoneError(false);
+      setEmailError(true)
+    }
+  }
 
   useEffect(() => {
     document.body.style.overflowY = "hidden";
@@ -450,10 +482,7 @@ const SignUp = () => {
     e.stopPropagation();
   };
 
-  const Place = () => {
-    setRender(!render);
-    setChangeInput(!changeInput);
-  };
+ 
 
   const PostData = async (e) => {
     e.preventDefault();
@@ -559,9 +588,24 @@ const SignUp = () => {
     setPhoneSlide(false);
     if (e.target.value.length != 0) {
       setPhoneSlide(true);
+
     }
 
     setPhoneBorder(false);
+  };
+  const Place = () => {
+    setRender(!render);
+    setChangeInput(!changeInput);
+    // phoneblur();
+    // if(changeInput==true)  
+    setInputValueOne("");
+    setInputValueTwo("");
+    setEmailError(false);
+    setPhoneError(false);
+    setPhoneBorder(false);
+    setPhoneRedOutline(false);
+    setPhoneSlide(false);
+    
   };
 
   const click = (e) => {
@@ -611,7 +655,11 @@ const SignUp = () => {
   //   const dataToSend = 'Some data';
   //   dispatch(updateData(dataToSend));
   // };
-  
+  // const phoneValue=(e)=>{
+  //   if(e.target.value.length!=0){
+  //     setPhoneSlide(false)
+  //   }
+  // }
   return ReactDOM.createPortal(
     <>
       <div className="modal-wrapper" onClick={clicktwo}></div>
@@ -698,7 +746,8 @@ const SignUp = () => {
                         type="email"
                         className="second_phone-input"
                         // value={user.phone}
-                        onChange={getUserData}
+                        value={inputValueTwo}
+                        onChange={ getUserDataEmail}
                         onFocus={phoneslide}
                         onBlur={phoneblur}
                         name="email"
@@ -707,12 +756,14 @@ const SignUp = () => {
                       <input
                         className="second_phone-input"
                         type="tel"
-                        value={user.phone}
+                        // value={user.phone}
+                       value={inputValueOne}
                         onFocus={phoneslide}
                         onChange={getUserData}
                         onBlur={phoneblur}
                         name="phone"
                         required
+                      
                       />
                     )}
                   </div>
@@ -720,6 +771,11 @@ const SignUp = () => {
                 {phoneError && (
                   <span className="phone-email-error-display">
                     Please enter the valid phone number
+                  </span>
+                )}
+                {emailError && (
+                  <span className="phone-email-error-display">
+                    Please enter the valid email
                   </span>
                 )}
                 <div className="click-email">
