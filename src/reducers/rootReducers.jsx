@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 // import  create  from "./reducer";
 // import { signCross } from "./reducer";
 import reducerName from "./reducer";
-import { reducerPhone, reducerMonth,reducerDay,reducerYear} from "./reducer";
+import { reducerPhone, reducerMonth,reducerDay,reducerEmail,reducerYear,ChangeEmail} from "./reducer";
 
 const rootReducer =combineReducers({
  reducerName,
@@ -11,5 +11,7 @@ const rootReducer =combineReducers({
  reducerMonth,
  reducerDay,
  reducerYear,
+ ChangeEmail,
+ reducerEmail
 })
 export default rootReducer;

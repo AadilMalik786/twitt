@@ -1,25 +1,4 @@
-// export const cross=()=>{
-//     return{
-//         type:"CROSS"
-//     }
-// }
-// export const handleCreate=()=>{
-//     return{
-//         type:"HANDLECREATE"
-//     }
-// }
 
-// export const signInCross=()=>{
-//     return{
-//         type:"SIGNINCROSS"
-//     }
-// }
-
-// export const handleSignIn=()=>{
-//     return{
-//         type:"HANDLESIGNIN"
-//     }
-// }
 export const updateDataName = (data) => ({
     type: 'UPDATE_DATA_Name',
     payload: data,
@@ -42,5 +21,15 @@ export const updateDataDay = (data) => ({
 
 export const updateDataYear = (data) => ({
     type: 'UPDATE_DATA_Year',
+    payload: data,
+  });
+
+export const updateDataEmail = (data) => ({
+    type: 'UPDATE_DATA_Email',
+    payload: data,
+  });
+
+export const ChangeInputField = (data) => ({
+    type: 'Change_Email_Phone',
     payload: data,
   });

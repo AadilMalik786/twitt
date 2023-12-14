@@ -14,6 +14,9 @@ const ConfirmSignUp = () => {
   const receivedMonth = useSelector((state) => state.reducerMonth);
   const receivedDay = useSelector((state) => state.reducerDay);
   const receivedYear = useSelector((state) => state.reducerYear);
+  const receivedEmail = useSelector((state) => state.ChangeEmail);
+  const receivedEmailInput=useSelector((state)=>state.reducerEmail)
+  console.log(receivedEmail);
   console.log(receivedName);
 
   return (
@@ -47,15 +50,35 @@ const ConfirmSignUp = () => {
                     readOnly
                     style={{ color: "white" }}
                   />
-                <div className="checkbox-green" ><FaCircleCheck /></div>
+                  <div className="checkbox-green">
+                    <FaCircleCheck />
+                  </div>
                 </div>
-                
               </label>
               <label className="label-click-confirm">
-                <div
+                {
+                  receivedEmail.variable ?<div
                   onClick={() => navigate(-2)}
                   className="first_name-input-confirm-signup"
-                >
+                 >
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <span className="input-placeholder">email</span>
+                  </div>
+                  <input
+                    className="first-name-input"
+                    type="tel"
+                    value={receivedEmailInput.data}
+                    readOnly
+                  />
+                  <div className="checkbox-green">
+                    <FaCircleCheck />
+                  </div>
+                </div>:<div
+                  onClick={() => navigate(-2)}
+                  className="first_name-input-confirm-signup"
+                 >
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
@@ -63,12 +86,16 @@ const ConfirmSignUp = () => {
                   </div>
                   <input
                     className="first-name-input"
+                    type="tel"
                     value={receivedPhone.data}
                     readOnly
-                    
                   />
-                   <div className="checkbox-green" ><FaCircleCheck /></div>
+                  <div className="checkbox-green">
+                    <FaCircleCheck />
+                  </div>
                 </div>
+                }
+                
               </label>
               <label className="label-click-confirm">
                 <div
@@ -85,7 +112,9 @@ const ConfirmSignUp = () => {
                     value={`${receivedMonth.data} ${receivedDay.data}, ${receivedYear.data}`}
                     readOnly
                   />
-                   <div className="checkbox-green" ><FaCircleCheck /></div>
+                  <div className="checkbox-green">
+                    <FaCircleCheck />
+                  </div>
                 </div>
               </label>
             </div>

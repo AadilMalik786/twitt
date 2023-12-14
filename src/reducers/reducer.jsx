@@ -35,7 +35,9 @@
 // export {signCross};
 const initialState = {
     data: null,
+    variable:false
   };
+
   const reducerName = (state = initialState, action) => {
     switch (action.type) {
       case 'UPDATE_DATA_Name':
@@ -50,6 +52,18 @@ const initialState = {
   const reducerPhone = (state = initialState, action) => {
     switch (action.type) {
       case 'UPDATE_DATA_Phone':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
+
+  const reducerEmail = (state = initialState, action) => {
+    switch (action.type) {
+      case 'UPDATE_DATA_Email':
         return {
           ...state,
           data: action.payload,
@@ -95,8 +109,21 @@ const initialState = {
     }
   };  
 
+  const ChangeEmail = (state = initialState, action) => {
+    switch (action.type) {
+      case 'Change_Email_Phone':
+        return {
+          variable:!state.variable
+        };
+      default:
+        return state;
+    }
+  };  
+
   export default reducerName;
   export {reducerPhone}
   export {reducerMonth}
   export {reducerDay}
   export {reducerYear}
+  export {ChangeEmail}
+ export{reducerEmail}

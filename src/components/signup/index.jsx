@@ -8,7 +8,7 @@ import ContentWrapper from "../contentwrapper/ContentWrapper";
 // import ConfirmSignUp from "../confirmsignup/ConfirmSignUp";
 // import Customize from "../customize/Customize";
 import { useDispatch } from "react-redux";
-import { updateDataName,updateDataPhone,updateDataMonth,updateDataDay,updateDataYear } from "../../action/actions";
+import { updateDataName,updateDataEmail,updateDataPhone,updateDataMonth,updateDataDay,updateDataYear,ChangeInputField } from "../../action/actions";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -100,6 +100,7 @@ const SignUp = () => {
       setPhoneError(false);
       setEmailError(true)
     }
+    dispatch(updateDataEmail(e.target.value));
   }
 
   useEffect(() => {
@@ -596,8 +597,6 @@ const SignUp = () => {
   const Place = () => {
     setRender(!render);
     setChangeInput(!changeInput);
-    // phoneblur();
-    // if(changeInput==true)  
     setInputValueOne("");
     setInputValueTwo("");
     setEmailError(false);
@@ -605,7 +604,7 @@ const SignUp = () => {
     setPhoneBorder(false);
     setPhoneRedOutline(false);
     setPhoneSlide(false);
-    
+    dispatch(ChangeInputField(changeInput))
   };
 
   const click = (e) => {
