@@ -3,12 +3,8 @@ import "./style.scss";
 import { IoMdArrowBack } from "react-icons/io";
 import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
-// import { UseSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCircleCheck } from "react-icons/fa6";
-// import { createUserWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "firebase/auth";
-// import auth from "../../firebase/firebase"
 import { SendData } from "../../action/actions";
 
 const ConfirmSignUp = () => {

@@ -1,10 +1,12 @@
 import React from "react";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
 const NewsFeed=()=>{
+
+
     return(
         <>
         <ContentWrapper>
-            <div>
+            <div >
                 newsfeed
             </div>
             </ContentWrapper>

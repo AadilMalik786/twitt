@@ -21,8 +21,8 @@ const App = () => {
             </Route>
             <Route path="signup" element={<SignUp />}>
               <Route path="cus" element={<Customize />}>
-                <Route path="con" element={<ConfirmSignUp />} >
-                  <Route path="pass" element={<CreatePass/>}/>
+                <Route path="con" element={<ConfirmSignUp />}>
+                  <Route path="pass" element={<CreatePass />} />
                 </Route>
               </Route>
             </Route>

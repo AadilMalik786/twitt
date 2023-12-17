@@ -34,9 +34,9 @@ const SignUp = () => {
   const [monthHighlight, setMonthHighlight] = useState(false);
   const [dayHighlight, setDayHighlight] = useState(false);
   const [yearHighlight, setYearHighlight] = useState(false);
-  const [dayHovered, setDayHovered] = useState(null);
-  const [monthHovered, setMonthHovered] = useState(null);
-  const [yearHovered, setYearHovered] = useState(null);
+  const [dayHovered, setDayHovered] = useState("");
+  const [monthHovered, setMonthHovered] = useState("");
+  const [yearHovered, setYearHovered] = useState("");
   const [inputValueOne, setInputValueOne] = useState('');
   const [inputValueTwo, setInputValueTwo] = useState('');
   const [emailError,setEmailError] =useState(false);

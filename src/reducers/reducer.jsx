@@ -120,6 +120,18 @@ const initialState = {
     }
   };  
 
+  const reducerSendSigninData = (state = initialState, action) => {
+    switch (action.type) {
+      case 'Send_Input_data':
+        return {
+          ...state,
+          data: action.payload,
+        };
+      default:
+        return state;
+    }
+  };  
+
   const ChangeEmail = (state = initialState, action) => {
     switch (action.type) {
       case 'Change_Email_Phone':
@@ -137,5 +149,6 @@ const initialState = {
   export {reducerDay}
   export {reducerYear}
   export {ChangeEmail}
- export{reducerEmail}
- export{reducerSendEmail}
+  export{reducerEmail}
+  export{reducerSendEmail}
+  export {reducerSendSigninData}

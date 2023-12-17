@@ -37,3 +37,7 @@ export const SendData = (data) => ({
     type: 'Send_Email',
     payload: data,
   });
+export const InputData = (data) => ({
+    type: 'Send_Input_data',
+    payload: data,
+  });

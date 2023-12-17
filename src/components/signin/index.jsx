@@ -7,57 +7,82 @@ import twitterimage from "../../assets/twitterimage.png";
 import ReactDOM from "react-dom";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { InputData } from "../../action/actions";
+import { useLocation } from "react-router-dom";
+
 
 const SignIn = () => {
-  const [showLogin, setShowLogin] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [mobileError,setMobileError]=useState(false);
-  const [emailError,setEmailError] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
+  const [showLogin, setShowLogin] = useState(false);
+  console.log(showLogin);
+  // const [userName, setUserName] = useState("");
+  const [slide, setSlide] = useState(false);
+  // const [input,setInput]=useState("");
+  const dispatch = useDispatch();
+
+  const [phoneborder, setPhoneBorder] = useState(false);
+  const phoneborderchange = () => {
+    setPhoneBorder(true);
+    setSlide(true);
+    // if (phoneRedOutline) {
+    //   setPhoneRedOutline(true);
+    //   setPhoneBorder(false);
+    // }
+  };
+  const phoneslide = () => {
+    // setPhoneSlide(true);
+    setPhoneBorder(true);
+  };
+
+  const phoneblur = (e) => {
+    // setPhoneSlide(false);
+    setSlide(false);
+    setPhoneBorder(false);
+  };
+  const Next = () => {
+    setShowLogin(true);
+    // console.log(showLogin);
+    navigate("login");
+  };
+
+  const PhoneEmailValue = (e) => {
+    const input = e.target.value;
+    console.log(input);
+    dispatch(InputData(input));
+  };
+
+  const handleBackNavigation = () => {
+    // Check if the current location is the expected one
+    if (location.pathname === "/signin") {
+      // If yes, navigate to a different route
+      console.log(location.pathname);
+      navigate("/");
+    }
+   
+  };
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+
+    // Set up an event listener for popstate (back/forward button)
+    window.addEventListener("popstate", handleBackNavigation);
+
     return () => {
       document.body.style.overflowY = "scroll";
+
+      // Clean up the event listener when the component is unmounted
+      window.removeEventListener("popstate", handleBackNavigation);
     };
   }, []);
 
-  const SendUserName = (e) =>{
-    setUserName(e.target.value);
-    const strings = e.target.value;
-    const phoneRegex = /^[0-9]{10}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (phoneRegex.test(strings)) {
-      // const number = parseInt(strings);
-      setMobileError(false);
-      setEmailError(false)
-    }
-    else{
-      setMobileError(true);
-      setEmailError(false)
-    }
-
-    if(emailRegex.test(strings)){
-      setMobileError(false);
-      setEmailError(false);
-    }
-    else{
-      setEmailError(true)
-      setMobileError(false);
-    }
-
-  } 
-
-  const Next=()=>{
-    setShowLogin(true);
-    navigate("Login")
-  }
-  
-
   return ReactDOM.createPortal(
+    <>
+      {showLogin ? (
+        ""
+       ) : (
         <>
-          {showLogin?"":
-          <>
           <div className="sign-in-wrapper"></div>
           <div className="sign-in-topmost-parent-firstchild">
             <div className="image-logo">
@@ -89,10 +114,40 @@ const SignIn = () => {
               <hr className="line" />
             </div>
             <div className="firstin">
-              <input
-                placeholder="Phone,email,or username"
-                onChange={SendUserName}
-              />
+              <label
+                className={`phone-lable-signin ${
+                  phoneborder && "phone-outline"
+                }`}
+                onClick={phoneborderchange}
+              >
+                <div className="second_phone-input-container-signin">
+                  <div className="phone-email-transition-container-signin">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <span
+                        className={`trans-signin ${
+                          slide && "animation-signin"
+                        }`}
+                      >
+                        Phone, email, or username
+                      </span>
+                    </div>
+                  </div>
+
+                  <input
+                    // type="email"
+                    className="second_phone-input-one"
+                    onChange={PhoneEmailValue}
+                    onFocus={phoneslide}
+                    onBlur={phoneblur}
+                    name="email"
+                  />
+                </div>
+              </label>
             </div>
             <div>
               <button className="signinnext" onClick={Next}>
@@ -105,14 +160,12 @@ const SignIn = () => {
               </button>
             </div>
             <div className="account">Don't have an account?Sign up</div>
-          {mobileError && <div>Mobile is not valid</div>}
-          {/* {emailError && <div>Email is not valid</div> } */}
           </div>
         </>
-    }
-    <Outlet/>
+      )}
+    <Outlet />
     </>,
     document.querySelector(".myPortalModalDiv")
-  );
+    );
 };
 export default SignIn;

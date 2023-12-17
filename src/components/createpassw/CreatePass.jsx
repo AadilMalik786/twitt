@@ -13,13 +13,16 @@ const CreatePass = () => {
   const [passwordSlide, setPasswordSlide] = useState(false);
   const [passwordBorder, setPasswordBorder] = useState(false);
   const navigate = useNavigate();
+
   const PasswordBorderChange = () => {
     setPasswordBorder(true);
   };
+
   const InputFocusOutline = () => {
     setPasswordBorder(true);
     setPasswordSlide(true);
   };
+  
   const InputBlurOutline = () => {
     setPasswordBorder(false);
     setPasswordSlide(false);
