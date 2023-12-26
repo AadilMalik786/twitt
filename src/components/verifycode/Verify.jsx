@@ -1,20 +1,22 @@
 import React from "react";
 import "./style.scss";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentwrapper/ContentWrapper";
-import { useSelector } from "react-redux";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../../firebase/firebase"
+import { useDispatch, useSelector } from "react-redux";
+import { updateDataPhone } from "../../action/actions";
+// import { useSelector } from "react-redux";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import {auth} from "../../firebase/firebase"
 
-const CreatePass = () => {
-  const receivedData =useSelector((state)=>state.reducerSendEmail);
-  const receivedMobile = useSelector((state)=>state.reducerPhone)
-  console.log(receivedMobile.data);
-  const[password,setPassword]=useState('');
+const Verify = () => {
+ 
   const [passwordSlide, setPasswordSlide] = useState(false);
   const [passwordBorder, setPasswordBorder] = useState(false);
+  const mobileData=useSelector((state)=>state.reducerPhone);
+  const [code,setCode]= useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const PasswordBorderChange = () => {
     setPasswordBorder(true);
@@ -31,29 +33,19 @@ const CreatePass = () => {
   };
  
 
-  const SignUp=(e)=>{
-    e.preventDefault();
-      if(receivedData.data && receivedData.data.includes("@")){
-        createUserWithEmailAndPassword(auth,receivedData.data,password)
-         .then((userCredential)=>{
-            console.log(userCredential);
-            navigate("/signin/newsfeed")
-        }).catch((error)=>{
-            console.log(error);
-        })
 
-      }
-      else{
-        createUserWithEmailAndPassword(auth,`${receivedMobile.data}@gmail.com`,password)
-        .then((userCredential)=>{
-               console.log(userCredential);
-               navigate("/signin/newsfeed")
-           }).catch((error)=>{
-               console.log(error);
-           })
-      }
-
-      }
+  const SignUp = (e) => {
+    window.confirmationResult.confirm(code)
+      .then(res => {
+        console.log(res);
+        console.log("code confirm");
+        dispatch(updateDataPhone(mobileData.data))
+        navigate("pass")
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   return (
     <>
       <div className="createpassword-model-wrpapper"></div>
@@ -64,9 +56,9 @@ const CreatePass = () => {
           </div>
           <div className="overflow-loginin">
             <ContentWrapper>
-              <h1>You'll need a Password</h1>
+              <h1>We sent you a code</h1>
               <div className="pass-word-in2">
-                Make sure its 8 character or more.
+                Enter it below to verify
               </div>
               <label
                 className={`password-lable ${
@@ -86,9 +78,9 @@ const CreatePass = () => {
                   </div>
                   <input
                     className="first-input-login"
-                    type="password"
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
+                    type="text"
+                    // value={password}
+                    onChange={(e)=>setCode(e.target.value)}
                     onFocus={InputFocusOutline}
                     onBlur={InputBlurOutline}
                   />
@@ -102,7 +94,8 @@ const CreatePass = () => {
           </div>
         </div>
       </div>
+      <Outlet/>
     </>
   );
 };
-export default CreatePass;
+export default Verify;

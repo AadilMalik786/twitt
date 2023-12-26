@@ -6,6 +6,9 @@ import ContentWrapper from "../contentwrapper/ContentWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCircleCheck } from "react-icons/fa6";
 import { SendData } from "../../action/actions";
+import { updateDataPhone } from "../../action/actions";
+import { auth } from "../../firebase/firebase";
+import { RecaptchaVerifier,signInWithPhoneNumber } from "firebase/auth";
 
 const ConfirmSignUp = () => {
   const navigate = useNavigate();
@@ -17,22 +20,34 @@ const ConfirmSignUp = () => {
   const receivedYear = useSelector((state) => state.reducerYear);
   const receivedEmail = useSelector((state) => state.ChangeEmail);
   const receivedEmailInput=useSelector((state)=>state.reducerEmail)
-  console.log(receivedEmail);
-  console.log(receivedName);
 
+  const sendOtp=()=>{
+    const appvarifier = new RecaptchaVerifier(auth,'abc',{'size':'invisible'})
+    signInWithPhoneNumber(auth,receivedPhone.data,appvarifier)
+    .then(res=>{
+        console.log(res);
+        window.confirmationResult=res;
+        console.log("otp send");
+    }).catch((error)=>{
+        console.log(error);
+    })
+ }
   
   const Next = async () => {
-    try {
-      // Dispatch the SendData action, assuming it returns a Promise
-      await dispatch(SendData(receivedEmailInput.data));
-  
-      // After the data has been sent successfully, navigate to "pass"
-      navigate("pass");
-    } catch (error) {
-      // Handle any errors that might occur during data sending
-      console.error('Error sending data:', error);
-    }
-  };
+    
+          if(receivedEmail.variable){
+            dispatch(SendData(receivedEmailInput.data))
+            // console.log("email");
+            navigate("pass");
+          }   
+          else{
+            sendOtp();
+            dispatch(updateDataPhone(receivedPhone.data))
+            navigate("verify");
+          }    
+  }
+
+
 
   return (
     <>
@@ -153,6 +168,7 @@ const ConfirmSignUp = () => {
           </ContentWrapper>
         </div>
       </div>
+      <div id="abc"></div>
       <Outlet />
     </>
   );

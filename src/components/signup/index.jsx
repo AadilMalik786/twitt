@@ -56,7 +56,7 @@ const SignUp = () => {
     // console.log(values);
     // setUser({ ...user, [names]: values });
     const stringNumber = e.target.value;
-    const phoneRegex = /^[0-9]{10}$/;
+    const phoneRegex = /^\+?[0-9]{12}$/;
     if (phoneRegex.test(stringNumber)) {
       const number = parseInt(stringNumber);
       setPhoneError(false);
@@ -514,8 +514,10 @@ const SignUp = () => {
     // yearnaming: "",
     // });
     // alert("data stored");
+    if(inputValue!="" && (inputValueOne!="" || inputValueTwo!="") && selectedMonth!="" && selectedday!="" && selectedYear!=""){
 
-    navigate("cus");
+      navigate("cus");
+    }
     
     // setSelectedMonth("");
     // setSelectedDay("");
@@ -648,6 +650,8 @@ const SignUp = () => {
   const YearClick=(index)=>{
     setYearHovered(index)
   }
+  const concatenatedValue = `${inputValueOne}@gmail.com`;
+
   
 
   // const sendDataToStore = () => {

@@ -16,32 +16,54 @@ const LoginSecond = () => {
   const [passwordBorder, setPasswordBorder] = useState(false);
   const [password, setPassword] = useState("");
   const recievedData = useSelector((state) => state.reducerSendSigninData);
+  const changeInput = useSelector((state)=>state.ChangeEmail);
+  
   const PasswordBorderChange = () => {
     setPasswordBorder(true);
   };
+
   const InputFocusOutline = () => {
     setPasswordBorder(true);
     setPasswordSlide(true);
   };
+
   const InputBlurOutline = () => {
     setPasswordBorder(false);
     setPasswordSlide(false);
   };
 
-  const signIn = async (e) => {
+  const signInEmail = async (e) => {
     e.preventDefault();
+    // setShowLoginOne(true);
+
+    if(recievedData.data.includes("@")){
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          recievedData.data,
+          password
+        );
+        console.log(userCredential);
+        navigate("/signin/newsfeed", { replace: true });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    else{
+      e.preventDefault();
     // setShowLoginOne(true);
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
-        recievedData.data,
+        `${recievedData.data}@gmail.com`,
         password
       );
       console.log(userCredential);
       navigate("/signin/newsfeed", { replace: true });
     } catch (error) {
       console.error(error);
-    }
+    } 
+  }
   };
 
  
@@ -104,7 +126,7 @@ const LoginSecond = () => {
                   </label>
                 </div>
                 <ContentWrapper>
-                  <button className="Login-button" onClick={signIn}>
+                  <button className="Login-button" onClick={signInEmail}>
                     Log in
                   </button>
                 </ContentWrapper>

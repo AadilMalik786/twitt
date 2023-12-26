@@ -49,9 +49,10 @@ const SignIn = () => {
 
   const PhoneEmailValue = (e) => {
     const input = e.target.value;
-    console.log(input);
-    dispatch(InputData(input));
+      dispatch(InputData(input));
+    console.log(typeof(input));
   };
+
 
   const handleBackNavigation = () => {
     // Check if the current location is the expected one
@@ -100,13 +101,13 @@ const SignIn = () => {
               <div className="googlefont">
                 <FcGoogle />
               </div>
-              <div className="googletext">Sign up with Google</div>
+              <div className="googletext">Sign in with Google</div>
             </button>
             <button className="apple">
               <div className="applefont">
                 <AiFillApple />
               </div>
-              <div className="appletext">Sign up with Apple</div>
+              <div className="appletext">Sign in with Apple</div>
             </button>
             <div className="horizontal_line-container">
               <hr className="line" />
@@ -139,7 +140,7 @@ const SignIn = () => {
                   </div>
 
                   <input
-                    // type="email"
+                    // type="tel"
                     className="second_phone-input-one"
                     onChange={PhoneEmailValue}
                     onFocus={phoneslide}
@@ -163,7 +164,7 @@ const SignIn = () => {
           </div>
         </>
       )}
-    <Outlet />
+    <Outlet/>
     </>,
     document.querySelector(".myPortalModalDiv")
     );
