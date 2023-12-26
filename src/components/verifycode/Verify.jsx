@@ -58,7 +58,7 @@ const Verify = () => {
             <ContentWrapper>
               <h1>We sent you a code</h1>
               <div className="pass-word-in2">
-                Enter it below to verify
+                {`Enter it below to verify ${mobileData.data}`}
               </div>
               <label
                 className={`password-lable ${
@@ -73,7 +73,7 @@ const Verify = () => {
                         passwordSlide && "password-trans"
                       }`}
                     >
-                      Password
+                      Waiting for sms to arrive
                     </span>
                   </div>
                   <input
@@ -87,7 +87,7 @@ const Verify = () => {
                 </div>
               </label>
             <button className="Login-button" onClick={SignUp}>
-                Log in
+                Next
               </button>
             </ContentWrapper>
             
