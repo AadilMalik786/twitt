@@ -514,7 +514,8 @@ const SignUp = () => {
     // yearnaming: "",
     // });
     // alert("data stored");
-    if(inputValue!="" && (inputValueOne!="" || inputValueTwo!="") && selectedMonth!="" && selectedday!="" && selectedYear!=""){
+    const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(inputValue!="" && (inputValueOne.length===13 || emailRegex.test(inputValueTwo)) && selectedMonth!="" && selectedday!="" && selectedYear!=""){
 
       navigate("cus");
     }
