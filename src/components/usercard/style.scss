@@ -1,0 +1,394 @@
+@import "../../mixins.scss";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.user-first-container{
+    display: flex;
+    // margin-left: 10px;
+    // margin-right: 20px;
+    border-top: 1px  solid #2f3336;
+    // border-bottom: 1px  solid black;
+    
+    padding: 10px;
+    gap: 10px;
+// background-color: aqua;
+    // margin-top: 40px;   
+    // height: 600px;
+    .user-text-two-container{
+        display: flex;
+        // background-color: red;
+        // align-items: center;
+        // gap: -50px;
+        width: 40vw;
+        justify-content: space-between;
+        // height: 5vh;
+        // padding-bottom: 5px;
+        @include ml{
+            // height: inherit;
+            width: 75vw;
+            // flex-wrap: wrap;
+        }
+        @include mg{
+            // height: inherit;
+            width: 85vw;
+            // flex-wrap: wrap;
+        }
+        @include kgf{
+            width: 550px;
+          }
+          @include mq{
+            width: 520px;
+        }
+        @include lk{
+          width: 540px;
+          // height: 300px;
+        }
+        .user-text-two{
+            display: flex;
+            // background-color: black;
+            // flex-wrap: wrap;
+            // white-space:;
+            white-space: nowrap;
+            // margin-bottom: 20px;
+            // width: 36vw;
+            // width: 500px;
+            // height: 10px;
+            gap: 2px;
+            @include kg{
+                flex-wrap: wrap;
+            }
+            .verified-icon-user{
+                height: 20px;
+                // background-color: orange;
+                width: 20px;
+                color: blue;
+            }
+           
+        }
+    }
+    .post-image-usercard-parent{
+        border-radius: 10px;
+        // border: 1px solid black;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width:39vw ;
+        @include mg {
+            //  padding-top: 5px;
+            // border-top: 10px;
+      
+            width: 80vw;
+            // height: 80vw;
+          }
+          @include ml{
+            width: 75vw;
+            // height: 75vw;
+          }
+          @include kgf{
+            width: 300px;
+            height: 300px;
+          border: 1px solid black;
+            // object-fit: contain;
+          }
+          @include mq{
+            width: 300px;
+            height: 300px;
+          }
+          @include lk{
+            width: 300px;
+            height: 300px;
+          }
+
+        .post-image-user{
+               // background-size: cover;
+      // background-color: red;
+      // display: flex;
+      // justify-content: flex-start;
+      // background-repeat: no-repeat;
+      border: 1px solid black;
+      width: 39vw;
+      border-radius: 10px;
+      // object-fit: contain;
+      // height: 100%;
+      @include mq{
+        width: 500px;
+        height: 300px;
+      }
+      @include lk{
+        width: 520px;
+        height: 300px;
+      }
+      @include mf{
+        width: 70vw;
+        height: 70vw;
+      }
+      @include kgf{
+        width: 500px;
+        height: 300px;
+        // object-fit: contain;
+      }
+      @include mg {
+        width: 80vw;
+
+        // height: 300px;
+        // background-size: cover;
+        // background-repeat: no-repeat;
+        // background-color: red;
+      }
+        }
+    }
+    .tweet-card-section-post-user{
+        margin-top: 2px;
+        font-size: 14px;
+        display: flex;
+        // background-color: blue;
+        // width: 40px;
+        color: white;
+        // display: block;
+        flex-wrap: wrap;
+        // word-wrap: break-word;
+        // height: 40px;
+        // padding-top: 20px;
+        // margin-bottom: 20px;
+       
+    }
+    .icon-container-parent-user{
+        display: flex;
+        justify-content: space-between;
+        width: 39vw;
+        font-size: 14px;
+        margin-top: 20px;
+        @include ml{
+            width: 73vw;
+        }
+        @include mg{
+            width: 84vw;
+        }
+        @include mf {
+            width: 68vw;
+          }
+          @include ma{
+            width: 80vw;
+          }
+          @include kgf{
+            width: 528px;
+          }
+          @include mq{
+            width: 500px;
+        }
+        @include lk{
+          width: 520px;
+          // height: 300px;
+        }
+
+        .icon-container-child-first-user {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // background-color: red;
+          gap: 2px;
+          color: #2f3336;
+          cursor: pointer;
+          .bubble-message-icon {
+            height: 25px;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            // background-color: green;
+          }
+          &:hover .bubble-message-icon {
+            background-color: rgba(29, 155, 240, 0.3);
+            color: rgba(29, 155, 240, 1);
+          }
+          &:hover {
+            color: rgba(29, 155, 240, 1);
+          }
+          .real-icon-child-main {
+            font-size: 17px;
+            cursor: pointer;
+          }
+        }
+        .icon-container-child-second {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // background-color: red;
+          gap: 2px;
+          color: #2f3336;
+          cursor: pointer;
+          .retweet-icon-twitter {
+            height: 25px;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            // background-color: green;
+          }
+          &:hover .retweet-icon-twitter {
+            background-color: rgb(0, 186, 124, 0.3);
+            color: rgb(0, 186, 124);
+          }
+          &:hover {
+            color: rgb(0, 186, 124);
+          }
+          .real-icon-child-main {
+            font-size: 17px;
+            cursor: pointer;
+          }
+        }
+    
+        .icon-container-child-third {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // background-color: red;
+          gap: 2px;
+          color: #2f3336;
+          cursor: pointer;
+    
+          .love-like-icon {
+            height: 25px;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            // background-color: green;
+          }
+          &:hover .love-like-icon {
+            background-color: rgb(249, 24, 128, 0.3);
+            color: rgb(249, 24, 128);
+          }
+          &:hover {
+            color: rgb(249, 24, 128);
+          }
+          .real-icon-child-main {
+            font-size: 17px;
+            cursor: pointer;
+          }
+        }
+        .icon-container-child-fourth {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // background-color: red;
+          gap: 2px;
+          color: #2f3336;
+          cursor: pointer;
+          .peaple-views {
+            height: 25px;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            // background-color: green;
+          }
+          &:hover .peaple-views {
+            background-color: rgba(29, 155, 240, 0.3);
+            color: rgba(29, 155, 240);
+          }
+          &:hover {
+            color: rgba(29, 155, 240);
+          }
+          .real-icon-child-main {
+            font-size: 17px;
+            cursor: pointer;
+          }
+        }
+        .bookmark-download-grand-parent {
+          display: flex;
+          color: #2f3336;
+          .bookmark-parent-tweeter {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .bookmark-file-upload {
+              font-size: 20px;
+            }
+            &:hover {
+              background-color: rgba(29, 155, 240, 0.3);
+              color: rgba(29, 155, 240);
+              cursor: pointer;
+            }
+          }
+          .download-parent-tweeter {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            &:hover {
+              background-color: rgba(29, 155, 240, 0.3);
+              color: rgba(29, 155, 240);
+              cursor: pointer;
+            }
+          }
+        }
+    }
+    .real-icon-child-main-user{
+        font-size: 17px;
+    }
+    .bookmark-file-upload-user{
+        font-size: 20px;
+    }
+    .video-usercard{
+        width: 98%;
+        display: flex;
+          @include mg{
+            width: 80vw;
+            // background-color: red;
+          }
+          @include kgf{
+            width: 300px;
+            height: 300px;
+          border: 1px solid black;
+            // object-fit: contain;
+          }
+          @include mq{
+            width: 300px;
+            height: 300px;
+          }
+          @include lk{
+            width: 300px;
+            height: 300px;
+          }
+        .video-user{
+            @include mq{
+                width: 500px;
+                height: 300px;
+              }
+              @include lk{
+                width: 520px;
+                height: 300px;
+              }
+              @include mf{
+                width: 70vw;
+                height: 70vw;
+              }
+              @include kgf{
+                width: 500px;
+                height: 300px;
+                // object-fit: contain;
+              }
+              @include mg {
+                width: 80vw;
+        
+                // height: 300px;
+                // background-size: cover;
+                // background-repeat: no-repeat;
+                // background-color: red;
+              }
+        }
+    }
+}

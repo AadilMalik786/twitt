@@ -1,0 +1,33 @@
+@import "../../mixins.scss";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: orange;
+    width: 100%;
+    // overflow: hidden;
+    background-color: black;
+    @include md{
+        height: 40vh;
+    }
+}
+ul{
+    display: flex;
+    max-width: 90vw;
+    justify-content: center;
+    // background-color: blue  ;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    // height: 60px;
+    font-size: 14px;
+    list-style: none;
+    color: #71767b;
+    overflow: hidden;
+   
+}

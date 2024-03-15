@@ -1,0 +1,151 @@
+@import "../../mixins.scss";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .modal-wrappers {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    // background-color: rgba(91, 112, 131, 0.4);
+  }
+  .customize-container{
+    // display: flex;
+  // justify-content: center;
+  // position: relative;
+  // height: 100vh;
+
+  .custom-sub-container{
+    overflow: hidden;
+    height: 590px;
+    width: 600px;
+    // display: flex;
+    color: white;
+    // justify-content: space-evenly;
+    background-color: black;
+    position: fixed;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    border-radius: 20px 20px;
+
+    @include md {
+      width: 100vw;
+    height: 100vh;
+    // background-color: red;
+    overflow-y: auto;
+    }
+
+    .top-heading-customize-block {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    // margin-bottom: 20px;
+    // margin-top: 20px;
+    // margin-right: 400px;
+    @include md{
+      margin-top: 18px;
+    }
+
+
+    &:first-child {
+      color: white;
+      margin-left: 20px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+  }
+  .customize-sub-heading{
+    font-size: 34px;
+    margin-top: 20px;
+    @include md{
+      font-size: 28px;
+    }
+  }
+  .Track-x{
+    font-size: 22px;
+    margin-top: 40px;
+  }
+  .checkbox-parent{
+    display: flex;
+    color: rgb(231, 233, 234);;
+    gap: 5px;
+  }
+  .checkbox-icon{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    color: black;
+    width: 20px;
+    border: 1px solid rgb(51, 54, 57);
+    border-radius: 5px 5px;
+  //  background-color: blue;
+    // color: black;
+    font-size: 35px;
+    
+    &.hideborder{
+      color: white;
+      background-color: #1d9bf0;
+    }
+  }
+  .checkbox-first-child{
+    margin-top: 20px;
+    font-size: 16px;
+    @include md{
+      font-size: 15px;
+    }
+  }
+  .policy-statement{
+    margin-top: 40px;
+    color: rgb(51, 54, 57);
+    & a{
+      color: #1d9bf0;
+      text-decoration: none;
+    }
+    & a:hover{
+      text-decoration: underline;
+    }
+    @include md{
+      font-size: 15px;
+      line-height: 17px;
+    }
+  }
+  .next-button{
+    margin-top: 125px;
+    border-radius: 24px 24px;
+    width: 450px;
+    height: 50px;
+
+    @include md {
+      width: 80%;
+      // background-color: green;
+      margin-top: 80px;
+      font-weight: 600;
+      font-size: 17px;
+      margin-left: 30px;
+    }
+  }
+ 
+}
+.overflow-customize{
+  position: relative;
+  @include md {
+    overflow-y: auto;
+    max-height: 380px;
+    // background-color: red;
+  // background-color: red ;
+  }
+ }

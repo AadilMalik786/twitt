@@ -1,0 +1,216 @@
+@import "../../mixins.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-wrapper {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(91, 112, 131, 0.4);
+}
+
+.Login_subParent-container {
+  height: 620px;
+  width: 580px;
+  background-color: black;
+  color: white;
+  border-radius: 10px 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-direction: column;
+
+  .Login-button{
+    margin-top: 200px;
+    width: 440px;
+    height: 55px;
+    font-size: 18px;
+    border-radius: 30px 30px; 
+
+    @include md{
+      // margin-top: 52vw;
+      margin-top: 40vh;
+      // background-color: green;
+      width: 100%;
+      // background-color: red;
+    }
+ }
+
+  @include md {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .login-logox-container {
+    width: 460px;
+    @include md{
+      // background-color: blue;
+      width: 460px;
+    }
+  }
+
+  .x-image-logo-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 60px;
+
+    @include md{
+      margin-top: 18px;
+    }
+    
+    .login-onclick-x-wrapper {
+      width: 430px;
+      @include md{
+        width: 430px;
+        display: flex;
+        justify-content: start;
+        // background-color: red;
+      }
+
+      .login-cross-icon {
+        display: flex;
+        cursor: pointer;
+        width: 30px;
+        font-size: 25px;
+        justify-content: center;
+        // margin-left: 100px;
+        margin-left: -30px;
+        // background-color: green;
+        @include md{
+          // width: 50%;
+          // justify-content: flex-end;
+          margin-left: -1px;
+        }
+      }
+      
+    }
+    .image-component-logox {
+        height: 25px;
+        width: 25px;
+        background-size: cover;
+      }
+      @include md{
+        width: 100%;
+        // background-color: aqua;
+      }
+  }
+  .overflow-loginin {
+    
+    
+    .second-input-pass{
+      width: 440px;
+      height: 60px;;
+      // background-color: green;
+        border-radius: 5px 5px;
+        background-color: black;
+        border: 1px solid rgb(51, 54, 57);
+        outline: none;
+        color: white;
+        // border: none;
+        // outline: none;
+        margin-top: 30px;
+        @include md{
+          width: 100%;
+        }
+      }
+      @include md {
+      // background-color: blue;
+      // overflow-y: auto;  
+      // height: 80vh;
+      width: 100%;
+    }
+    h1{
+      @include md{
+        font-size: 25px;    
+        // background-color: red;
+      }
+    }
+  }
+}
+
+.password-lable{
+    display: block;
+    width: 100%;
+    // margin-left: 10px;
+    // background-color: red;
+    border-radius: 5px 5px;
+    margin-top: 20px;
+   &.password-outline{
+    outline: 1px solid #1d9bf0;
+   }
+   @include md{
+    width: 100%;
+   }
+}
+.user-name-in1{
+     // width: 75%;
+     height: 60px;
+     // background-color: blue;
+     border: 1px solid rgb(51, 54, 57);
+     // margin-left: 60px;
+     display: flex;
+     flex-direction: column;
+     // align-items: end;
+     justify-content: center;
+     border-radius: 5px 5px;
+     position: relative;
+     .username-transition-parent{
+        display: flex;
+     }
+     .first-input-login{
+        width: 400px;
+        cursor: text;
+        height: 20px;
+        margin-left: 5px;
+        margin-top: 20px;
+      background-color: black;
+    //   background-color: red;
+      font-size: 18px;
+      color: white;
+      border-radius: 5px 5px;
+      border: none;
+      outline: none;
+      // background-color: red;
+      margin-left: 20px;
+      position: absolute;
+      z-index: 1;
+      @include md{
+        width: 90%;
+      }
+    }
+   
+     .password-slide-s1{
+        transition: all 0.1s ease-in;
+        transform: translate(0,-10px);
+        font-size: 18px;
+        // padding: 5px;
+        margin-left: 10px;
+        color: rgb(51, 54, 57);
+        // background-color: blue;
+      
+        &.password-trans{
+            // height: 20px;
+              // background-color: blue;
+              transform:translate(0px,-13px);
+              font-size: 14px;
+              // border: none;
+              // outline: none;
+              padding: 5px;
+              color: #1d9bf0;
+        }
+     }
+ 
+}

@@ -1,0 +1,254 @@
+@import "../../mixins.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body{
+  overflow-x: hidden;
+}
+.home-container {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  gap: 50px;
+  // position: relative;
+  // overflow-x: hidden;
+  @include md{
+    // gap: 10px;
+  }
+  
+  .home-container-parent-compo{
+    display: flex;
+    justify-content: space-around;
+    // background-color: aqua;
+    width: 100%;
+    @include md{
+      // background-color: orange;
+      flex-direction: column;
+
+      // justify-content: flex-start;
+      // align-items: flex-start;
+      justify-content: center;
+      
+    }
+  }
+  
+  @include md {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .home-first-container {
+    // height: 300px;
+    // width: 300px;
+    // background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    // position: absolute;
+    // left: 220px;
+
+    @include md {
+      height: 200px;
+      // top: 20px;
+      // padding: 50px;
+      // position: static;
+      // margin-top: 50px;
+      // width: 100%;
+      // display: flex;
+      // justify-content: flex-start;
+      // background-color: red;
+      width: 200px;
+    }
+
+    .twitter-main-image {
+      height: 290px;
+      width: 300px;
+      background-size: cover;
+      @include md {
+        height: 80px;
+        width: 80px;
+
+      }
+    }
+  }
+  .home-second-container {
+    color: white;
+    // background-color: red;
+    height: 550px;
+    // position: absolute;
+    margin-top: 80px;
+    // overflow: hidden;
+
+    @include md {
+      // top: 100px;
+      height: 600px;
+      // width: 100%;
+      // background-color: green;
+      // height: 100px;
+      // position: static;
+      margin-top: 0px;
+      padding-left: 30px;
+      // background-color: red;
+      // height: 100%;
+    }
+
+    .heading-second-container-first-child {
+      font-size: 55px;
+      // background-color: green;
+      @include md{
+        // margin-bottom: 100px;
+      }
+    }
+    .home-second-container-second-child {
+      font-size: 30px;
+    }
+
+    .signup-with-google-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      cursor: pointer;
+      border: none;
+
+      .google_icon-fcGoogle {
+        display: flex;
+        font-size: 23px;
+      }
+      .googletext {
+        display: flex;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .signup-with-apple-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      cursor: pointer;
+      gap: 5px;
+      font-size: 14px;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      border: none;
+
+      .apple_icon-aiApple {
+        display: flex;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+      .applefont {
+        display: flex;
+        font-size: 23px;
+      }
+    }
+    .horizontal_line {
+      border: none;
+      border-top: 1px solid;
+      width: 27%;
+      display: inline-block;
+      margin: 4px 5px;
+      margin-top: 15px;
+      @include md{
+        width: 120px;
+      }
+    }
+    .heading-second-container-first-child {
+      margin-bottom: 3rem;
+    }
+    .create_Account-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
+      cursor: pointer;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      background-color: #1d9bf0;
+      color: white;
+      border: none;
+    }
+    .text_inside-create-button {
+      margin-top: 10px;
+      word-spacing: -1px;
+      letter-spacing: -1px;
+      font-size: 10px;
+      a {
+        color: rgb(29, 155, 240);
+      }
+    }
+    .Signin-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 20px;
+      gap: 9px;
+      font-size: 14px;
+      width: 18rem;
+      height: 2.5rem;
+      border-radius: 25px 25px;
+      background-color: black;
+      color: rgb(29, 155, 240);
+      border: none;
+      outline: 0.5px solid rgb(83, 100, 113);
+    }
+  }
+}
+.already-account{
+  margin-top: 60px;
+}
+footer{
+  display: flex;
+  // height: 100vh;  
+  // background-color: red;
+  // background-color: red;
+  justify-content: center;
+  align-items: center;
+  // background-color: orange;
+  width: 100%;
+  // overflow: hidden;
+  // background-color: blue;
+  // margin-top: 40px;
+  @include md{
+      // height: 40vh;
+      // margin-top: 0;
+  }
+}
+ul{
+  display: flex;
+  max-width: 90vw;
+  justify-content: center;
+  // background-color: orange ;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  // height: 60px;
+  font-size: 14px;
+  list-style: none;
+  color: #71767b;
+  overflow: hidden;
+  margin-bottom: 30px;
+ 
+}

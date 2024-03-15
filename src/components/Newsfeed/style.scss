@@ -1,0 +1,207 @@
+@import "../../mixins.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+  
+
+.grid-container{
+    display: grid;
+    // width: 100%;
+    grid-template-columns: repeat(3,1fr);
+    background-color: black;
+    //  grid-gap: 400px; 
+    // height: 100vh;
+    overflow-x: hidden;
+    // min-height: 100vh;
+    @include kg{
+        grid-template-columns: repeat(2,1fr);
+        
+    }
+    @include kgf{
+        grid-template-columns: repeat(3,1fr);
+        // position: relative;
+        
+        
+    }
+    @include mg{
+        grid-template-columns: 0 1fr 0;
+        // grid-column: span 2;
+        
+    }
+    // @include ml{
+    //     grid-template-columns: 1fr 0 0;
+    // }
+   
+    
+   
+}
+.grid-item-one{
+    // background-color: blue;
+    overflow-y: auto;
+    overflow-x: hidden;
+    // display: flex;
+    // justify-content: center;
+    // width: 20vw;
+    height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+    // width: 100px;
+    // text-align: center; 
+    /* border-right: 1px solid black; */
+    @include kg{
+        
+    // width: 50%;
+    // background-color: green;
+    // width: 600px;
+        // width: 80vw;
+    }
+    @include mg{
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        // display: none;
+        // width: 50%;
+    }
+    @include kgf{
+        width: 100px;
+        // height: 100vh;
+        // height: 115vh;
+        // background-color: blue;
+      }
+      @include mb{
+        // background-color: green;
+        // display: flex;
+        // justify-content: flex-end;
+      }
+
+    // scrollbar-width: thin;
+    scrollbar-width: none;
+    // scrollbar-color: transparent transparent;
+    &::-webkit-scrollbar {
+        width: 0; /* Set width to 0 to hide the scrollbar */
+      }
+}
+.grid-item-two{
+    
+    overflow-y: auto;
+    overflow-x: hidden;
+   height: 100vh;
+
+    width: 45vw;
+    border: 1px solid #2f3336;
+    position: relative;
+    background-color: black;
+    @include kg{
+        // grid-column: 2 / span 3
+        
+        width: 50vw;
+        // background-color: aqua;
+    }
+    @include md{
+        width: 70vw;
+    }
+    @include ml{
+        width: 85vw;
+    }
+    @include mg{
+        width: 100%;
+        // grid-column: span 1;
+        position: relative;
+    }
+    @include kgf{
+        width: 600px;
+        // height: 116vh;
+        // min-height: 100vh;
+        // width: 59vw;
+        // width: 100%;
+        // background-color: orange;
+    }
+    @include mq{
+        width:600px ;
+    }
+    @include lk{
+        width: 600px;
+        // height: 300px;
+      }
+    // @include mf{
+    //     width: 500px;
+    //   }
+    scrollbar-width: none;
+    // scrollbar-color: transparent transparent;
+
+    &::-webkit-scrollbar {
+        width: 0; /* Set width to 0 to hide the scrollbar */
+      }
+
+      .navigation-mobile-main-parent{
+        // background-color: red;
+        display: flex;
+        justify-content: space-around;
+        height: 50px;
+        align-items: center;
+        position: fixed;
+        bottom: 1px;
+        width: 100%;
+        backdrop-filter:blur(0.5px);
+        background: rgba(0, 0, 0, 0.25);
+        // background-color: red;
+        @include  ms{
+            display: none;
+        }
+        @include  mg{
+            display: flex;
+        }
+        .navigation-item-mobile{
+            color: white;
+        }
+      }
+      .icon-single-mobile-menu{
+        height: 35px;
+        width: 35px;
+        // background-color: green;
+        // font-size: 50px;
+    }
+    
+}
+.grid-item-three{ 
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 30vw;
+    // background-color: black;
+    // width: 100%;
+    @include kg{
+        // background-color: red;
+        
+        display: none;
+        // width: 0px;
+    }
+    @include ml{
+        display: none;
+    }
+    @include mg{
+        display: none;
+    }
+    @include md{
+        display: none;
+    }
+    @include kgf{
+        width: 39vw;
+        // width: 400%;
+        min-height: 100vh;
+        // background-color: red;
+        display: flex;
+        // position: relative;
+        // right: 0;
+        // background-color: green;
+        // align-items: center;
+        // justify-content: center;
+    }
+   
+    scrollbar-width: none;
+    
+}
