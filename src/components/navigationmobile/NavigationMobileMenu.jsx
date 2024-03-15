@@ -19,7 +19,7 @@ export const NavigationMobileMenu=[
     {
         title:"Explore",
         icon:<ExploreIcon className="icon-single-mobile-menu"/>,
-        path:"/explor",
+        path:"/explore",
     },
     {
         title:"Notification",
