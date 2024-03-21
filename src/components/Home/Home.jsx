@@ -6,7 +6,7 @@ import Img from "../image/Img";
 import twitterimage from "../../assets/twitterimage.png";
 import "./home.scss";
 
-const Home = () => {
+const Home = React.memo(() => {
   const navigate = useNavigate();
   return (
     <>
@@ -90,5 +90,5 @@ const Home = () => {
       <Outlet />
     </>
   );
-};
+});
 export default Home;

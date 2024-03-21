@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.scss";
 const ContentWrapper =React.memo(({children})=>{
-    console.log("contentWrapper");
     
     return(
         // <>

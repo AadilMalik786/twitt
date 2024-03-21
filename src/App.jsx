@@ -14,14 +14,14 @@ import Verify from "./components/verifycode/Verify";
 import { auth } from "./firebase/firebase";
 
 
-const App = () => {
+const App = React.memo(() => {
   
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
-      console.log(user);
+      // console.log(user);
     });
 
     return () => unsubscribe();
@@ -52,5 +52,5 @@ const App = () => {
       </BrowserRouter>
     </>
   );
-};
+});
 export default App;

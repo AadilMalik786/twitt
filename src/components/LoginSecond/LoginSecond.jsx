@@ -19,10 +19,10 @@ const LoginSecond = React.memo(() => {
   const recievedData = useSelector((state) => state.reducerSendSigninData);
   const [passkey, setPassKey] = useState(true);
 
-  const HandleEye=(e)=>{
+  const HandleEye=useCallback((e)=>{
     setPassKey(!passkey);
     
-  }
+  })
 
   const PasswordBorderChange = useCallback(() => {
     setPasswordBorder(true);
