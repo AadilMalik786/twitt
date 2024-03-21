@@ -6,8 +6,11 @@ import ContentWrapper from "../contentwrapper/ContentWrapper";
 import { useSelector } from "react-redux";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../../firebase/firebase"
+import { Eye } from "lucide-react";
+import { EyeOff } from "lucide-react";
 
 const CreatePass = () => {
+  const [passkey, setPassKey] = useState(true);
   const receivedData =useSelector((state)=>state.reducerSendEmail);
   const receivedMobile = useSelector((state)=>state.reducerPhone)
   console.log(receivedMobile.data);
@@ -16,6 +19,11 @@ const CreatePass = () => {
   const [passwordSlide, setPasswordSlide] = useState(false);
   const [passwordBorder, setPasswordBorder] = useState(false);
   const navigate = useNavigate();
+
+  const HandleEye=(e)=>{
+    setPassKey(!passkey);
+    // setReveal(false)
+  }
 
   const PasswordBorderChange = () => {
     setPasswordBorder(true);
@@ -87,12 +95,19 @@ const CreatePass = () => {
                   </div>
                   <input
                     className="first-input-login"
-                    type="password"
+                    type={passkey ? "password" : "text"}
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)}
                     onFocus={InputFocusOutline}
                     onBlur={InputBlurOutline}
                   />
+                   {
+                      passkey?<div  style={{position:"absolute",right:"5px",top:"25px"}}>
+                    <abbr title="reveal" > <Eye onClick={HandleEye} /></abbr>
+                    </div>:<div style={{position:"absolute",right:"5px",top:"25px"}}>
+                    <abbr title="Hide the password" > <EyeOff onClick={HandleEye}/></abbr>
+                    </div>
+                    }
                 </div>
               </label>
             <button className="Login-button" onClick={SignUp}>
