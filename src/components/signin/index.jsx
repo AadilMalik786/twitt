@@ -12,7 +12,7 @@ import { InputData } from "../../action/actions";
 import { useLocation } from "react-router-dom";
 
 
-const SignIn = () => {
+const SignIn = React.memo(() => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false);
@@ -172,5 +172,5 @@ console.log("signin");
     </>,
     document.querySelector(".myPortalModalDiv")
     );
-};
+});
 export default SignIn;
