@@ -9,6 +9,7 @@ import { auth } from "../../firebase/firebase";
 import { Eye } from "lucide-react";
 import { EyeOff } from "lucide-react";
 import "./style.scss";
+import Loader from "../Loader/Loader";
 // import { useEffect } from "react";
 
 const LoginSecond = React.memo(() => {
@@ -18,6 +19,7 @@ const LoginSecond = React.memo(() => {
   const [password, setPassword] = useState("");
   const recievedData = useSelector((state) => state.reducerSendSigninData);
   const [passkey, setPassKey] = useState(true);
+  const [loader,setLoader] = useState(false);
 
   const HandleEye=useCallback((e)=>{
     setPassKey(!passkey);
@@ -42,6 +44,7 @@ const LoginSecond = React.memo(() => {
     async (e) => {
       e.preventDefault();
       // setShowLoginOne(true);
+      setLoader(true)
 
       if (recievedData.data.includes("@")) {
         try {
@@ -70,6 +73,7 @@ const LoginSecond = React.memo(() => {
           console.error(error);
         }
       }
+      setLoader(false)
     },
     [navigate, password, recievedData]
   );
@@ -140,9 +144,12 @@ const LoginSecond = React.memo(() => {
               </label>
             </div>
             {/* <ContentWrapper > */}
-            <button className="Login-button" onClick={signInEmail}>
+            <button on  className="Login-button" onClick={signInEmail}>
               Log in
             </button>
+            {
+              loader && <div style={{display:"flex",justifyContent:"center",position:"relative", bottom:"360px" }}> <Loader /></div> 
+            }
           </ContentWrapper>
           {/* </ContentWrapper> */}
         </div>
