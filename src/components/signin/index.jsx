@@ -69,7 +69,7 @@ console.log("signin");
   };
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
 
     // Set up an event listener for popstate (back/forward button)
     window.addEventListener("popstate", handleBackNavigation);

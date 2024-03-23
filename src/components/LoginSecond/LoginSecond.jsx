@@ -98,7 +98,7 @@ const LoginSecond = React.memo(() => {
               </div>
             </div>
 
-            <div className="overflow-loginin">
+            <div className="overflow-loginin" >
               <h1>Enter your password</h1>
               <div className="pass-word-in2">
                 <input
@@ -112,8 +112,9 @@ const LoginSecond = React.memo(() => {
                   passwordBorder && "password-outline"
                 }`}
                 onClick={PasswordBorderChange}
-              >
+                >
                 <div className="user-name-in1">
+               
                   <div className="username-transition-parent">
                     <span
                       className={`password-slide-s1 ${
@@ -147,8 +148,9 @@ const LoginSecond = React.memo(() => {
             <button on  className="Login-button" onClick={signInEmail}>
               Log in
             </button>
-            {
-              loader && <div style={{display:"flex",justifyContent:"center",position:"relative", bottom:"360px" }}> <Loader /></div> 
+           
+          {
+              loader &&  <Loader />
             }
           </ContentWrapper>
           {/* </ContentWrapper> */}
