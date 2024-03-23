@@ -54,7 +54,7 @@ const LoginSecond = React.memo(() => {
             password
           );
           // console.log(userCredential);
-          navigate("/home", { replace: true });
+          // navigate("/home", { replace: true });
         } catch (error) {
           console.error(error);
         }
@@ -68,12 +68,12 @@ const LoginSecond = React.memo(() => {
             password
           );
           // console.log(userCredential);
-          navigate("/home", { replace: true });
+          // navigate("/home", { replace: true });
         } catch (error) {
           console.error(error);
         }
       }
-      setLoader(false)
+      // setLoader(false)
     },
     [navigate, password, recievedData]
   );
